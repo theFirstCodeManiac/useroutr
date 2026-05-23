@@ -85,7 +85,7 @@ export function Navbar({ onWaitlistClick }: NavbarProps) {
             onClick={onWaitlistClick}
             className="hidden md:inline-flex"
           >
-            <span className="pill pill-dark">
+            <span className="pill pill-accent">
               Get started
               <ArrowRight className="size-4" strokeWidth={1.6} />
             </span>
@@ -139,7 +139,7 @@ export function Navbar({ onWaitlistClick }: NavbarProps) {
               }}
               className="mt-3"
             >
-              <span className="pill pill-dark w-full justify-center">
+              <span className="pill pill-accent w-full justify-center">
                 Get started
                 <ArrowRight className="size-4" strokeWidth={1.6} />
               </span>

@@ -45,7 +45,7 @@ export function Pricing({ onWaitlistClick }: PricingProps) {
             style={{ fontFamily: "var(--font-display)", fontWeight: 600 }}
           >
             Transparent pricing.{" "}
-            <span className="editorial-italic text-ink-2">No surprises</span>.
+            <span className="editorial-italic text-accent">No surprises</span>.
           </h2>
           <p className="mx-auto mt-5 max-w-[520px] text-[16px] leading-relaxed text-ink-2">
             One simple rate. No monthly fees. Volume discounts kick in
@@ -76,7 +76,7 @@ export function Pricing({ onWaitlistClick }: PricingProps) {
                   onClick={onWaitlistClick}
                   className="magnet w-full"
                 >
-                  <span className="pill pill-dark w-full justify-center py-3 text-[13px]">
+                  <span className="pill pill-accent w-full justify-center py-3 text-[13px]">
                     Open an account
                     <ArrowRight className="size-4" strokeWidth={1.6} />
                   </span>
@@ -161,13 +161,13 @@ function PricingCard({
     <div
       className={`relative h-full overflow-hidden rounded-3xl p-7 md:p-8 ${
         isPrimary
-          ? "border border-ink bg-bg-card shadow-[0_40px_100px_-40px_rgba(14,14,12,0.28)]"
+          ? "border border-accent bg-bg-card shadow-[0_40px_100px_-40px_rgba(255,91,31,0.32)]"
           : "border border-rule bg-bg-card/60"
       }`}
     >
       {badge && (
         <span
-          className="absolute right-6 top-6 rounded-full bg-ink px-2.5 py-1 text-[10px] uppercase tracking-[0.14em] text-bg"
+          className="absolute right-6 top-6 rounded-full bg-accent px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-ink"
           style={{ fontFamily: "var(--font-mono)" }}
         >
           {badge}
@@ -204,7 +204,7 @@ function PricingCard({
           >
             <span
               className={`mt-0.5 grid size-4 shrink-0 place-items-center rounded-full ${
-                isPrimary ? "bg-ink text-bg" : "bg-bg-soft text-ink-2"
+                isPrimary ? "bg-accent text-ink" : "bg-bg-soft text-ink-2"
               }`}
             >
               <Check className="size-2.5" strokeWidth={2.6} />

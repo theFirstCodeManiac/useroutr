@@ -33,7 +33,7 @@ export function TrustStrip() {
   const settleTrack = [...settle, ...settle];
 
   return (
-    <section className="relative border-t border-rule pt-20 pb-20 md:pt-28 md:pb-28">
+    <section className="relative border-t border-b border-rule bg-accent-tint pt-20 pb-20 md:pt-28 md:pb-28">
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -47,7 +47,7 @@ export function TrustStrip() {
             style={{ fontFamily: "var(--font-display)", fontWeight: 600 }}
           >
             Accept <span className="editorial-italic text-ink-2">anything</span>
-            . Settle <span className="editorial-italic text-ink-2">anywhere</span>
+            . Settle <span className="editorial-italic text-accent">anywhere</span>
             .
           </h2>
           <p className="mx-auto mt-4 max-w-[480px] text-[15px] leading-relaxed text-ink-2">

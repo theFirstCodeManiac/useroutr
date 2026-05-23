@@ -453,7 +453,7 @@ function SubmitRow({
         Settles in ~2-4s · Non-custodial
       </span>
       <button type="button" onClick={onSubmit} className="magnet">
-        <span className="pill pill-dark py-3 text-[13px]">
+        <span className="pill pill-accent py-3 text-[13px]">
           {label}
           <ArrowRight className="size-4" strokeWidth={1.6} />
         </span>

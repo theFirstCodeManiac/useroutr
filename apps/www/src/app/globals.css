@@ -25,9 +25,10 @@
   --rule-2: #cdced0;
 
   /* Brand */
-  --accent: #5b53d8;       /* indigo-violet — primary accent */
-  --accent-ink: #443bbf;   /* deeper hover state */
-  --accent-soft: #ecebfa;  /* tinted background wash */
+  --accent: #ff5b1f;       /* electric orange — primary accent */
+  --accent-ink: #d94606;   /* deeper hover state */
+  --accent-soft: #fff1e8;  /* tinted background wash */
+  --accent-tint: #ffe7d6;  /* slightly stronger wash for section backgrounds */
   --teal: #00807a;         /* secondary cool, used sparingly */
   --blue: #1a4fc4;         /* link / focus */
 
@@ -91,6 +92,7 @@
   --color-accent: var(--accent);
   --color-accent-ink: var(--accent-ink);
   --color-accent-soft: var(--accent-soft);
+  --color-accent-tint: var(--accent-tint);
   --color-teal: var(--teal);
   --color-blue: var(--blue);
 
@@ -250,15 +252,17 @@ h1 { font-weight: 600; letter-spacing: -0.045em; }
 }
 .pill-accent {
   background: var(--accent);
-  color: #fff;
+  color: var(--ink);
+  font-weight: 600;
 }
-.pill-accent:hover { background: var(--accent-ink); }
+.pill-accent:hover { background: var(--accent-ink); color: #fff; }
 /* Legacy alias — old `pill-orange` keeps working but points to accent now */
 .pill-orange {
   background: var(--accent);
-  color: #fff;
+  color: var(--ink);
+  font-weight: 600;
 }
-.pill-orange:hover { background: var(--accent-ink); }
+.pill-orange:hover { background: var(--accent-ink); color: #fff; }
 
 /* Pixelated/dotted text effect — for "Pay anything. Settle everywhere." accent */
 .pixelated {

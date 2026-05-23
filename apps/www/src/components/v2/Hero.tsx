@@ -52,7 +52,7 @@ export function Hero({ onWaitlistClick }: HeroProps) {
               Cross-chain payments,
             </span>
             <span className="block whitespace-nowrap">
-              <span className="editorial-italic text-ink-2">without</span> the
+              <span className="editorial-italic text-accent">without</span> the
               custody.
             </span>
           </motion.h1>
@@ -73,7 +73,7 @@ export function Hero({ onWaitlistClick }: HeroProps) {
             className="mt-10 flex flex-wrap items-center justify-center gap-3 md:gap-5"
           >
             <button type="button" onClick={onWaitlistClick} className="magnet">
-              <span className="pill pill-dark">
+              <span className="pill pill-accent">
                 Open an account
                 <ArrowRight className="size-4" strokeWidth={1.6} />
               </span>

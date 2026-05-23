@@ -104,7 +104,7 @@ export function Developers() {
             style={{ fontFamily: "var(--font-display)", fontWeight: 600 }}
           >
             Built for{" "}
-            <span className="editorial-italic text-ink-2">engineers</span>, not
+            <span className="editorial-italic text-accent">engineers</span>, not
             architects.
           </h2>
           <p className="mx-auto mt-5 max-w-[520px] text-[16px] leading-relaxed text-ink-2">

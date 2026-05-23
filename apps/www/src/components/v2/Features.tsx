@@ -69,7 +69,7 @@ export function Features() {
             >
               Everything you need to{" "}
               <span className="editorial-italic text-ink-2">run</span> and{" "}
-              <span className="editorial-italic text-ink-2">grow</span> your
+              <span className="editorial-italic text-accent">grow</span> your
               business.
             </h2>
             <p className="mt-5 max-w-[440px] text-[16px] leading-relaxed text-ink-2">
