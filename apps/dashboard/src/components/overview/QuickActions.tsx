@@ -41,7 +41,7 @@ const ACTIONS: Action[] = [
     icon: <ArrowUpRight className="size-4" strokeWidth={1.5} />,
     label: "Read the API",
     description: "Docs · SDK · webhooks",
-    href: "https://docs.useroutr.io",
+    href: "https://docs.useroutr.com",
     external: true,
   },
 ];

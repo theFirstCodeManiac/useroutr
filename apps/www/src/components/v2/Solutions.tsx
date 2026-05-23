@@ -105,7 +105,11 @@ function RevenueVisual() {
     { label: "Faster collections", value: "+67%", caption: "DSO 41d → 14d" },
     { label: "Cross-border fee", value: "$0.0001", caption: "vs $25 wire" },
     { label: "Avg settlement", value: "2.3s", caption: "End to end" },
-    { label: "Countries reachable", value: "174", caption: "Bank · mobile · card" },
+    {
+      label: "Countries reachable",
+      value: "174",
+      caption: "Bank · mobile · card",
+    },
   ];
 
   return (
@@ -233,7 +237,8 @@ function NoCodeRow() {
           className="text-[32px] leading-[1.05] tracking-[-0.035em] text-ink md:text-[48px]"
           style={{ fontFamily: "var(--font-display)", fontWeight: 600 }}
         >
-          No engineers? <span className="editorial-italic text-ink-2">No problem.</span>
+          No engineers?{" "}
+          <span className="editorial-italic text-ink-2">No problem.</span>
         </h2>
         <p className="mt-5 max-w-[440px] text-[16px] leading-relaxed text-ink-2">
           Take payments from the dashboard in three clicks. Pay-by-link,
@@ -242,9 +247,21 @@ function NoCodeRow() {
 
         <div className="mt-8 space-y-2.5">
           {[
-            { icon: Link2, label: "Pay by link", desc: "Send a URL, get paid." },
-            { icon: FileText, label: "Invoices", desc: "Recurring or one-off." },
-            { icon: ScanLine, label: "Hosted checkout", desc: "Embed in your site." },
+            {
+              icon: Link2,
+              label: "Pay by link",
+              desc: "Send a URL, get paid.",
+            },
+            {
+              icon: FileText,
+              label: "Invoices",
+              desc: "Recurring or one-off.",
+            },
+            {
+              icon: ScanLine,
+              label: "Hosted checkout",
+              desc: "Embed in your site.",
+            },
           ].map((row) => (
             <div
               key={row.label}
@@ -257,9 +274,7 @@ function NoCodeRow() {
                 <span className="block text-[14px] font-medium text-ink">
                   {row.label}
                 </span>
-                <span className="block text-[12px] text-ink-3">
-                  {row.desc}
-                </span>
+                <span className="block text-[12px] text-ink-3">{row.desc}</span>
               </span>
             </div>
           ))}
@@ -267,7 +282,7 @@ function NoCodeRow() {
 
         <div className="mt-9">
           <Link
-            href="https://docs.useroutr.io/no-code"
+            href="https://docs.useroutr.com/no-code"
             target="_blank"
             rel="noreferrer"
             className="group inline-flex items-center gap-1 text-[14px] text-ink-2 transition-colors hover:text-ink"
@@ -333,7 +348,7 @@ function NoCodeVisual() {
           className="mt-2 truncate text-[14px] font-medium text-ink"
           style={{ fontFamily: "var(--font-mono)" }}
         >
-          useroutr.io/pay/4f9a-acme
+          useroutr.com/pay/4f9a-acme
         </div>
         <div className="mt-3 grid grid-cols-[auto_1fr] items-center gap-3">
           <QrPreview />

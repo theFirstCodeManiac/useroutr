@@ -9,7 +9,7 @@ describe('NotificationsService', () => {
   let service: NotificationsService;
   let queueMock: { add: jest.Mock };
 
-  const APP_URL = 'https://app.useroutr.io';
+  const APP_URL = 'https://app.useroutr.com';
 
   beforeEach(async () => {
     queueMock = {

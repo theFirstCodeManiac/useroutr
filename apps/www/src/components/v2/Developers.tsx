@@ -40,8 +40,8 @@ const snippets: Record<Lang, string[]> = {
     "return payment.checkout_url",
   ],
   curl: [
-    "curl https://api.useroutr.io/v1/payments \\",
-    "  -H \"Authorization: Bearer $USEROUTR_KEY\" \\",
+    "curl https://api.useroutr.com/v1/payments \\",
+    '  -H "Authorization: Bearer $USEROUTR_KEY" \\',
     "  -d amount=4900 \\",
     "  -d currency=USD \\",
     "  -d 'accept[]=usdc' \\",
@@ -51,15 +51,15 @@ const snippets: Record<Lang, string[]> = {
     "  -d 'settle[address]=GA...'",
   ],
   go: [
-    "import \"github.com/useroutr/useroutr-go\"",
+    'import "github.com/useroutr/useroutr-go"',
     "",
-    "client := useroutr.NewClient(os.Getenv(\"USEROUTR_KEY\"))",
+    'client := useroutr.NewClient(os.Getenv("USEROUTR_KEY"))',
     "",
     "payment, err := client.Payments.Create(ctx, &useroutr.PaymentInput{",
     "    Amount:   4900,",
-    "    Currency: \"USD\",",
-    "    Accept:   []string{\"usdc\", \"card\", \"ach\"},",
-    "    Settle:   &useroutr.Settle{Rail: \"stellar\", Address: \"GA...\"},",
+    '    Currency: "USD",',
+    '    Accept:   []string{"usdc", "card", "ach"},',
+    '    Settle:   &useroutr.Settle{Rail: "stellar", Address: "GA..."},',
     "})",
   ],
 };
@@ -71,8 +71,16 @@ const integrations = [
   { glyph: "N", label: "NetSuite", tone: "bg-ink text-bg" },
   { glyph: "Z", label: "Zapier", tone: "bg-[#ff4a00] text-white" },
   { glyph: "S", label: "Slack", tone: "bg-[#4a154b] text-white" },
-  { glyph: "N", label: "Notion", tone: "bg-bg-card text-ink border border-rule" },
-  { glyph: "{ }", label: "Webhooks", tone: "bg-bg-soft text-ink border border-rule" },
+  {
+    glyph: "N",
+    label: "Notion",
+    tone: "bg-bg-card text-ink border border-rule",
+  },
+  {
+    glyph: "{ }",
+    label: "Webhooks",
+    tone: "bg-bg-soft text-ink border border-rule",
+  },
 ];
 
 export function Developers() {
@@ -101,8 +109,8 @@ export function Developers() {
           </h2>
           <p className="mx-auto mt-5 max-w-[520px] text-[16px] leading-relaxed text-ink-2">
             One API to accept, route, and settle. Typed SDKs for the languages
-            your team already writes in. Webhooks, idempotency, and request
-            logs out of the box.
+            your team already writes in. Webhooks, idempotency, and request logs
+            out of the box.
           </p>
         </motion.div>
 
@@ -182,7 +190,7 @@ export function Developers() {
                 </div>
               </div>
               <Link
-                href="https://docs.useroutr.io"
+                href="https://docs.useroutr.com"
                 target="_blank"
                 rel="noreferrer"
                 className="group inline-flex shrink-0 items-center gap-1.5 rounded-full bg-bg/10 px-3 py-2 text-[12px] text-bg transition hover:bg-bg/20"
@@ -297,7 +305,8 @@ function colorize(line: string): React.ReactNode {
   }
   // Split on string literals
   const parts: React.ReactNode[] = [];
-  const re = /(['"`][^'"`]*['"`])|(\b(?:import|from|const|let|var|await|new|return|client|os)\b)|(\b\d+(?:_\d+)?\b)/g;
+  const re =
+    /(['"`][^'"`]*['"`])|(\b(?:import|from|const|let|var|await|new|return|client|os)\b)|(\b\d+(?:_\d+)?\b)/g;
   let last = 0;
   let m: RegExpExecArray | null;
   let i = 0;

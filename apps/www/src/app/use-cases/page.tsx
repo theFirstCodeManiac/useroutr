@@ -82,11 +82,11 @@ export default function UseCasesPage() {
             <div className="md:col-span-3 md:pt-8">
               <p className="text-[15px] leading-relaxed text-ink-2 md:text-[16px]">
                 The same four endpoints — payments, payment links, invoices,
-                payouts — power four very different businesses. Below, the
-                shape of each integration.
+                payouts — power four very different businesses. Below, the shape
+                of each integration.
               </p>
               <Link
-                href="https://docs.useroutr.io"
+                href="https://docs.useroutr.com"
                 target="_blank"
                 rel="noreferrer"
                 className="group mt-5 inline-flex items-center gap-1 text-[13px] text-ink"
@@ -130,7 +130,10 @@ export default function UseCasesPage() {
                 <div className="md:col-span-6">
                   <h2
                     className="text-[36px] leading-[1.02] tracking-[-0.035em] text-ink md:text-[64px]"
-                    style={{ fontFamily: "var(--font-display)", fontWeight: 600 }}
+                    style={{
+                      fontFamily: "var(--font-display)",
+                      fontWeight: 600,
+                    }}
                   >
                     {c.label}
                   </h2>
@@ -177,10 +180,9 @@ export default function UseCasesPage() {
             </div>
             <div className="md:pt-6">
               <p className="text-[17px] text-ink-2">
-                The integration shape doesn&apos;t change much from one
-                vertical to the next. Whether you&apos;re a marketplace, a
-                fintech, or an e-commerce checkout, you&apos;ll touch the same
-                four endpoints —{" "}
+                The integration shape doesn&apos;t change much from one vertical
+                to the next. Whether you&apos;re a marketplace, a fintech, or an
+                e-commerce checkout, you&apos;ll touch the same four endpoints —{" "}
                 <code
                   className="rounded bg-bg-soft px-1.5 py-0.5 text-[13px] text-ink"
                   style={{ fontFamily: "var(--font-mono)" }}

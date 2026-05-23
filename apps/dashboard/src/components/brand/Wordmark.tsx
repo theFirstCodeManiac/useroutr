@@ -6,7 +6,7 @@ interface WordmarkProps {
 /**
  * Useroutr combination mark — geometric icon + lowercase wordmark.
  * Mirrors the mark used on the marketing site so the brand reads continuously
- * from useroutr.io → dashboard.useroutr.io.
+ * from useroutr.com → dashboard.useroutr.com.
  */
 export function Wordmark({ className, hideWordmark }: WordmarkProps) {
   return (

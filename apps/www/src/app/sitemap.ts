@@ -1,6 +1,6 @@
 import { MetadataRoute } from "next";
 
-const baseUrl = "https://useroutr.io";
+const baseUrl = "https://useroutr.com";
 
 const useCases = ["marketplaces", "fintech", "ecommerce", "payouts"];
 

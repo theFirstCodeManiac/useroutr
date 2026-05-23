@@ -21,7 +21,12 @@ type CaseContent = {
     body?: string;
     bullets?: string[];
   }[];
-  closing: { heading: string; body: string; cta: string; ctaIsWaitlist?: boolean };
+  closing: {
+    heading: string;
+    body: string;
+    cta: string;
+    ctaIsWaitlist?: boolean;
+  };
 };
 
 const cases: Record<string, CaseContent> = {
@@ -32,7 +37,10 @@ const cases: Record<string, CaseContent> = {
     titleAccent: "in five seconds.",
     subhead:
       "Useroutr handles split payments, multi-recipient payouts, and atomic escrow across 174 countries — without your platform ever taking custody of seller funds.",
-    primaryCta: { label: "Read the marketplace guide", href: "https://docs.useroutr.io" },
+    primaryCta: {
+      label: "Read the marketplace guide",
+      href: "https://docs.useroutr.com",
+    },
     secondaryCta: { label: "Talk to the team", href: "/contact" },
     sections: [
       {
@@ -69,7 +77,10 @@ const cases: Record<string, CaseContent> = {
     titleAccent: "without becoming a money transmitter.",
     subhead:
       "Useroutr is non-custodial by architecture, not by paperwork. Embed wallet-to-wallet transfers, fiat-to-crypto on-ramping, and cross-chain settlement — and stay outside the licensing perimeter that custodial platforms drag you into.",
-    primaryCta: { label: "Read the fintech guide", href: "https://docs.useroutr.io" },
+    primaryCta: {
+      label: "Read the fintech guide",
+      href: "https://docs.useroutr.com",
+    },
     secondaryCta: { label: "See the regulatory memo", href: "#" },
     sections: [
       {
@@ -105,8 +116,14 @@ const cases: Record<string, CaseContent> = {
     titleAccent: "Zero crypto knowledge required.",
     subhead:
       "Add a Useroutr-hosted checkout to your store and accept USDC on Stellar, Ethereum, or Base — alongside fiat through MoneyGram for customers who'd rather not touch crypto. Settle to your bank account in two business days, or to a wallet in five seconds.",
-    primaryCta: { label: "Try the sandbox", href: "https://docs.useroutr.io/sandbox" },
-    secondaryCta: { label: "Read the integration guide", href: "https://docs.useroutr.io" },
+    primaryCta: {
+      label: "Try the sandbox",
+      href: "https://docs.useroutr.com/sandbox",
+    },
+    secondaryCta: {
+      label: "Read the integration guide",
+      href: "https://docs.useroutr.com",
+    },
     sections: [
       {
         eyebrow: "What the customer sees",
@@ -141,7 +158,10 @@ const cases: Record<string, CaseContent> = {
     titleAccent: "One API call.",
     subhead:
       "Bulk payouts to bank accounts, mobile money wallets, and self-custody crypto wallets. Per-recipient status. Individual retry. Idempotency keys that survive batch retries. The kind of payouts API engineers will actually agree to maintain.",
-    primaryCta: { label: "Read the payouts API", href: "https://docs.useroutr.io/payouts" },
+    primaryCta: {
+      label: "Read the payouts API",
+      href: "https://docs.useroutr.com/payouts",
+    },
     secondaryCta: { label: "Talk to the team", href: "/contact" },
     sections: [
       {
@@ -245,8 +265,14 @@ export default async function UseCasePage({
               <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
                 <Link
                   href={c.primaryCta.href}
-                  target={c.primaryCta.href.startsWith("http") ? "_blank" : undefined}
-                  rel={c.primaryCta.href.startsWith("http") ? "noreferrer" : undefined}
+                  target={
+                    c.primaryCta.href.startsWith("http") ? "_blank" : undefined
+                  }
+                  rel={
+                    c.primaryCta.href.startsWith("http")
+                      ? "noreferrer"
+                      : undefined
+                  }
                   className="magnet"
                 >
                   <span className="pill pill-dark">
@@ -283,87 +309,100 @@ export default async function UseCasePage({
           </div>
         </section>
 
-          {/* Sections */}
-          <section className="border-t border-rule py-20 md:py-28">
-            <div className="container-x">
-              <div className="space-y-16 md:space-y-24">
-                {c.sections.map((s, i) => (
-                  <div
-                    key={i}
-                    className="grid items-start gap-8 md:grid-cols-[1fr_1.4fr] md:gap-16"
-                  >
-                    <div>
-                      {s.eyebrow && <span className="eyebrow">{s.eyebrow}</span>}
-                      {s.heading && (
-                        <h2
-                          className="mt-4 text-[28px] leading-[1.05] tracking-[-0.035em] md:text-[44px]"
-                          style={{ fontFamily: "var(--font-display)", fontWeight: 600 }}
-                        >
-                          {s.heading}
-                        </h2>
-                      )}
-                    </div>
-                    <div>
-                      {s.body && (
-                        <p className="text-[17px] text-ink-2 md:text-[18px]">{s.body}</p>
-                      )}
-                      {s.bullets && (
-                        <ul className="border-t border-rule">
-                          {s.bullets.map((b) => (
-                            <li
-                              key={b}
-                              className="row-rule flex items-start gap-3 py-5 text-[15px] text-ink"
-                            >
-                              <span className="mt-2 size-1.5 shrink-0 rounded-full bg-accent" />
-                              {b}
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          {/* Closing CTA */}
-          <section className="border-t border-rule py-20 md:py-24">
-            <div className="container-x">
-              <div className="rounded-2xl border border-rule-2 bg-bg-card p-10 md:p-14">
-                <h2
-                  className="max-w-3xl text-[32px] leading-[1.05] tracking-[-0.04em] md:text-[56px]"
-                  style={{ fontFamily: "var(--font-display)", fontWeight: 600 }}
+        {/* Sections */}
+        <section className="border-t border-rule py-20 md:py-28">
+          <div className="container-x">
+            <div className="space-y-16 md:space-y-24">
+              {c.sections.map((s, i) => (
+                <div
+                  key={i}
+                  className="grid items-start gap-8 md:grid-cols-[1fr_1.4fr] md:gap-16"
                 >
-                  {c.closing.heading}
-                </h2>
-                <p className="mt-5 max-w-2xl text-[17px] text-ink-2 md:text-[18px]">
-                  {c.closing.body}
-                </p>
-                <div className="mt-9">
-                  {c.closing.ctaIsWaitlist ? (
-                    <WaitlistButton>
-                      <span className="pill pill-dark">
-                        {c.closing.cta}
-                        <ArrowRight className="size-4" strokeWidth={1.6} />
-                      </span>
-                    </WaitlistButton>
-                  ) : (
-                    <Link
-                      href={c.primaryCta.href}
-                      target={c.primaryCta.href.startsWith("http") ? "_blank" : undefined}
-                      rel={c.primaryCta.href.startsWith("http") ? "noreferrer" : undefined}
-                    >
-                      <span className="pill pill-dark">
-                        {c.closing.cta}
-                        <ArrowRight className="size-4" strokeWidth={1.6} />
-                      </span>
-                    </Link>
-                  )}
+                  <div>
+                    {s.eyebrow && <span className="eyebrow">{s.eyebrow}</span>}
+                    {s.heading && (
+                      <h2
+                        className="mt-4 text-[28px] leading-[1.05] tracking-[-0.035em] md:text-[44px]"
+                        style={{
+                          fontFamily: "var(--font-display)",
+                          fontWeight: 600,
+                        }}
+                      >
+                        {s.heading}
+                      </h2>
+                    )}
+                  </div>
+                  <div>
+                    {s.body && (
+                      <p className="text-[17px] text-ink-2 md:text-[18px]">
+                        {s.body}
+                      </p>
+                    )}
+                    {s.bullets && (
+                      <ul className="border-t border-rule">
+                        {s.bullets.map((b) => (
+                          <li
+                            key={b}
+                            className="row-rule flex items-start gap-3 py-5 text-[15px] text-ink"
+                          >
+                            <span className="mt-2 size-1.5 shrink-0 rounded-full bg-accent" />
+                            {b}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
                 </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Closing CTA */}
+        <section className="border-t border-rule py-20 md:py-24">
+          <div className="container-x">
+            <div className="rounded-2xl border border-rule-2 bg-bg-card p-10 md:p-14">
+              <h2
+                className="max-w-3xl text-[32px] leading-[1.05] tracking-[-0.04em] md:text-[56px]"
+                style={{ fontFamily: "var(--font-display)", fontWeight: 600 }}
+              >
+                {c.closing.heading}
+              </h2>
+              <p className="mt-5 max-w-2xl text-[17px] text-ink-2 md:text-[18px]">
+                {c.closing.body}
+              </p>
+              <div className="mt-9">
+                {c.closing.ctaIsWaitlist ? (
+                  <WaitlistButton>
+                    <span className="pill pill-dark">
+                      {c.closing.cta}
+                      <ArrowRight className="size-4" strokeWidth={1.6} />
+                    </span>
+                  </WaitlistButton>
+                ) : (
+                  <Link
+                    href={c.primaryCta.href}
+                    target={
+                      c.primaryCta.href.startsWith("http")
+                        ? "_blank"
+                        : undefined
+                    }
+                    rel={
+                      c.primaryCta.href.startsWith("http")
+                        ? "noreferrer"
+                        : undefined
+                    }
+                  >
+                    <span className="pill pill-dark">
+                      {c.closing.cta}
+                      <ArrowRight className="size-4" strokeWidth={1.6} />
+                    </span>
+                  </Link>
+                )}
               </div>
             </div>
-          </section>
+          </div>
+        </section>
       </PageEnter>
     </PageShell>
   );

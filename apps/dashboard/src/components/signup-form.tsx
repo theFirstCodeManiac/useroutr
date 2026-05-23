@@ -206,7 +206,7 @@ export function SignupForm() {
       <p className="text-center text-[11px] text-muted-foreground">
         By creating an account you agree to the{" "}
         <Link
-          href="https://useroutr.io/terms"
+          href="https://useroutr.com/terms"
           target="_blank"
           rel="noreferrer"
           className="link-underline text-foreground"
@@ -215,7 +215,7 @@ export function SignupForm() {
         </Link>{" "}
         and{" "}
         <Link
-          href="https://useroutr.io/privacy"
+          href="https://useroutr.com/privacy"
           target="_blank"
           rel="noreferrer"
           className="link-underline text-foreground"

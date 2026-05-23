@@ -47,16 +47,12 @@ export function FinalCTA({ onWaitlistClick }: FinalCTAProps) {
             .
           </h2>
           <p className="mx-auto mt-6 max-w-[540px] text-[16px] leading-relaxed text-white/85 md:text-[18px]">
-            Open a Useroutr account in 60 seconds. No setup fees. Cancel
-            anytime — and your funds are always yours.
+            Open a Useroutr account in 60 seconds. No setup fees. Cancel anytime
+            — and your funds are always yours.
           </p>
 
           <div className="mt-10 flex flex-wrap items-center justify-center gap-3 md:gap-5">
-            <button
-              type="button"
-              onClick={onWaitlistClick}
-              className="magnet"
-            >
+            <button type="button" onClick={onWaitlistClick} className="magnet">
               <span
                 className="pill"
                 style={{ background: "#ffffff", color: "var(--accent)" }}
@@ -66,7 +62,7 @@ export function FinalCTA({ onWaitlistClick }: FinalCTAProps) {
               </span>
             </button>
             <Link
-              href="https://docs.useroutr.io"
+              href="https://docs.useroutr.com"
               target="_blank"
               rel="noreferrer"
               className="group inline-flex items-center gap-1.5 px-3 text-[14px] text-white/85 transition-colors hover:text-white"

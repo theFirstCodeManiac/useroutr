@@ -13,7 +13,8 @@ const QRCode = require('qrcode') as {
   toDataURL(text: string): Promise<string>;
 };
 
-const BASE_URL = process.env.PAYMENT_LINK_BASE_URL ?? 'https://pay.useroutr.io';
+const BASE_URL =
+  process.env.PAYMENT_LINK_BASE_URL ?? 'https://pay.useroutr.com';
 const SHORT_CODE_LENGTH = 8;
 const SHORT_CODE_CHARS =
   'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';

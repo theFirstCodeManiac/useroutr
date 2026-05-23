@@ -71,7 +71,7 @@ type PaymentWithRelations = Payment & {
 export class PaymentsService implements OnModuleInit {
   private readonly logger = new Logger(PaymentsService.name);
   private readonly CHECKOUT_URL =
-    process.env.CHECKOUT_URL || 'https://checkout.useroutr.io';
+    process.env.CHECKOUT_URL || 'https://checkout.useroutr.com';
   private readonly BANK_SESSION_TTL_HOURS = Number(
     process.env.BANK_SESSION_TTL_HOURS || 24,
   );

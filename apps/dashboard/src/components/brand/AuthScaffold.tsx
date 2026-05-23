@@ -41,7 +41,7 @@ export function AuthScaffold({
       <main className="relative flex min-h-svh flex-col">
         <header className="flex items-center justify-between px-6 py-5 md:px-10">
           <Link
-            href="https://useroutr.io"
+            href="https://useroutr.com"
             target="_blank"
             rel="noreferrer"
             aria-label="Useroutr — home"
@@ -51,7 +51,7 @@ export function AuthScaffold({
           <div className="flex items-center gap-2">
             <ThemeToggle size="sm" />
             <Link
-              href="https://docs.useroutr.io"
+              href="https://docs.useroutr.com"
               target="_blank"
               rel="noreferrer"
               className="group hidden items-center gap-1 text-[13px] text-muted-foreground transition-colors hover:text-foreground sm:inline-flex"
@@ -92,7 +92,7 @@ export function AuthScaffold({
             </span>
             <div className="hidden items-center gap-4 md:flex">
               <Link
-                href="https://useroutr.io/terms"
+                href="https://useroutr.com/terms"
                 target="_blank"
                 rel="noreferrer"
                 className="hover:text-foreground"
@@ -100,7 +100,7 @@ export function AuthScaffold({
                 Terms
               </Link>
               <Link
-                href="https://useroutr.io/privacy"
+                href="https://useroutr.com/privacy"
                 target="_blank"
                 rel="noreferrer"
                 className="hover:text-foreground"
@@ -108,7 +108,7 @@ export function AuthScaffold({
                 Privacy
               </Link>
               <Link
-                href="https://status.useroutr.io"
+                href="https://status.useroutr.com"
                 target="_blank"
                 rel="noreferrer"
                 className="hover:text-foreground"

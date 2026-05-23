@@ -101,7 +101,7 @@ export function Pricing({ onWaitlistClick }: PricingProps) {
               features={enterpriseFeatures}
               cta={
                 <Link
-                  href="mailto:sales@useroutr.io?subject=Useroutr%20enterprise"
+                  href="mailto:sales@useroutr.com?subject=Useroutr%20enterprise"
                   className="w-full"
                 >
                   <span className="pill pill-light w-full justify-center py-3 text-[13px]">

@@ -82,12 +82,14 @@ export function WaitlistModal({ open, onOpenChange }: WaitlistModalProps) {
 
               {submitted ? (
                 <div className="mt-7 rounded-lg border border-rule bg-bg-soft p-5 text-[14px] text-ink-2">
-                  <p className="font-medium text-ink">You&apos;re on the list.</p>
+                  <p className="font-medium text-ink">
+                    You&apos;re on the list.
+                  </p>
                   <p className="mt-1.5">
                     We&apos;ll email when mainnet keys are ready. The sandbox is
                     open at{" "}
                     <span style={{ fontFamily: "var(--font-mono)" }}>
-                      docs.useroutr.io
+                      docs.useroutr.com
                     </span>
                     .
                   </p>
@@ -128,11 +130,17 @@ export function WaitlistModal({ open, onOpenChange }: WaitlistModalProps) {
 
                   <p className="text-center text-[11px] text-ink-3">
                     By requesting access you agree to our{" "}
-                    <a href="/terms" className="underline underline-offset-2 hover:text-ink">
+                    <a
+                      href="/terms"
+                      className="underline underline-offset-2 hover:text-ink"
+                    >
                       Terms
                     </a>{" "}
                     and{" "}
-                    <a href="/privacy" className="underline underline-offset-2 hover:text-ink">
+                    <a
+                      href="/privacy"
+                      className="underline underline-offset-2 hover:text-ink"
+                    >
                       Privacy Policy
                     </a>
                     .
@@ -147,7 +155,13 @@ export function WaitlistModal({ open, onOpenChange }: WaitlistModalProps) {
   );
 }
 
-function Field({ label, children }: { label: string; children: React.ReactNode }) {
+function Field({
+  label,
+  children,
+}: {
+  label: string;
+  children: React.ReactNode;
+}) {
   return (
     <label className="block">
       <span

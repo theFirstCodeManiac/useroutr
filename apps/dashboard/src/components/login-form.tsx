@@ -130,15 +130,13 @@ export function LoginForm() {
         className="magnet mt-2 inline-flex h-11 w-full items-center justify-center gap-1.5 rounded-full bg-foreground text-[14px] font-medium text-background transition-colors hover:bg-foreground/88 disabled:opacity-60"
       >
         {isSubmitting ? "Signing in…" : "Sign in"}
-        {!isSubmitting && (
-          <ArrowRight className="size-4" strokeWidth={1.6} />
-        )}
+        {!isSubmitting && <ArrowRight className="size-4" strokeWidth={1.6} />}
       </button>
 
       <p className="text-center text-[11px] text-muted-foreground">
         By signing in you agree to our{" "}
         <Link
-          href="https://useroutr.io/terms"
+          href="https://useroutr.com/terms"
           target="_blank"
           rel="noreferrer"
           className="link-underline text-foreground"
@@ -147,7 +145,7 @@ export function LoginForm() {
         </Link>{" "}
         and{" "}
         <Link
-          href="https://useroutr.io/privacy"
+          href="https://useroutr.com/privacy"
           target="_blank"
           rel="noreferrer"
           className="link-underline text-foreground"

@@ -72,18 +72,14 @@ export function Hero({ onWaitlistClick }: HeroProps) {
             variants={rise}
             className="mt-10 flex flex-wrap items-center justify-center gap-3 md:gap-5"
           >
-            <button
-              type="button"
-              onClick={onWaitlistClick}
-              className="magnet"
-            >
+            <button type="button" onClick={onWaitlistClick} className="magnet">
               <span className="pill pill-dark">
                 Open an account
                 <ArrowRight className="size-4" strokeWidth={1.6} />
               </span>
             </button>
             <Link
-              href="https://docs.useroutr.io"
+              href="https://docs.useroutr.com"
               target="_blank"
               rel="noreferrer"
               className="group inline-flex items-center gap-1.5 px-3 text-[14px] text-ink-2 transition-colors hover:text-ink"
@@ -132,8 +128,11 @@ function CornerOrnament({
       <path d="M2 50 Q 2 2, 50 2" strokeLinecap="round" />
       <circle cx="2" cy="50" r="1.4" fill="currentColor" stroke="none" />
       <circle cx="50" cy="2" r="1.4" fill="currentColor" stroke="none" />
-      <path d="M14 38 Q 14 14, 38 14" strokeOpacity="0.55" strokeLinecap="round" />
+      <path
+        d="M14 38 Q 14 14, 38 14"
+        strokeOpacity="0.55"
+        strokeLinecap="round"
+      />
     </svg>
   );
 }
-

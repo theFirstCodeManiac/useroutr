@@ -1,10 +1,6 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import {
-  Hanken_Grotesk,
-  Fraunces,
-  JetBrains_Mono,
-} from "next/font/google";
+import { Hanken_Grotesk, Fraunces, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import { QueryProvider } from "@/providers/QueryProvider";
 import { AuthProvider } from "@/providers/AuthProvider";
@@ -12,7 +8,7 @@ import "./globals.css";
 import { ToastProvider } from "@useroutr/ui";
 
 // Hanken Grotesk — display + body. Same family as the marketing site so the
-// brand voice is unbroken between useroutr.io and dashboard.useroutr.io.
+// brand voice is unbroken between useroutr.com and dashboard.useroutr.com.
 const hanken = Hanken_Grotesk({
   subsets: ["latin"],
   variable: "--font-hanken",

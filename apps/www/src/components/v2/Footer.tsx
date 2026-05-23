@@ -19,10 +19,18 @@ const columns: { title: string; links: LinkItem[] }[] = [
   {
     title: "Developers",
     links: [
-      { label: "API reference", href: "https://docs.useroutr.io", external: true },
-      { label: "SDKs", href: "https://docs.useroutr.io/sdks", external: true },
-      { label: "Webhooks", href: "https://docs.useroutr.io/webhooks", external: true },
-      { label: "Status", href: "https://status.useroutr.io", external: true },
+      {
+        label: "API reference",
+        href: "https://docs.useroutr.com",
+        external: true,
+      },
+      { label: "SDKs", href: "https://docs.useroutr.com/sdks", external: true },
+      {
+        label: "Webhooks",
+        href: "https://docs.useroutr.com/webhooks",
+        external: true,
+      },
+      { label: "Status", href: "https://status.useroutr.com", external: true },
       { label: "Changelog", href: "/changelog" },
     ],
   },
@@ -33,7 +41,7 @@ const columns: { title: string; links: LinkItem[] }[] = [
       { label: "Use cases", href: "/use-cases" },
       { label: "Customers", href: "/customers" },
       { label: "Press", href: "/press" },
-      { label: "Contact", href: "mailto:hello@useroutr.io" },
+      { label: "Contact", href: "mailto:hello@useroutr.com" },
     ],
   },
   {
@@ -50,7 +58,11 @@ const columns: { title: string; links: LinkItem[] }[] = [
 const socials = [
   { label: "GitHub", href: "https://github.com/useroutr", glyph: "↗" },
   { label: "X", href: "https://x.com/useroutr", glyph: "𝕏" },
-  { label: "LinkedIn", href: "https://linkedin.com/company/useroutr", glyph: "in" },
+  {
+    label: "LinkedIn",
+    href: "https://linkedin.com/company/useroutr",
+    glyph: "in",
+  },
 ];
 
 export function Footer() {
@@ -60,7 +72,11 @@ export function Footer() {
         <div className="grid grid-cols-2 gap-y-12 md:grid-cols-12 md:gap-x-12">
           {/* Brand block */}
           <div className="col-span-2 md:col-span-4">
-            <Link href="/" aria-label="Useroutr — home" className="inline-block">
+            <Link
+              href="/"
+              aria-label="Useroutr — home"
+              className="inline-block"
+            >
               <Wordmark className="h-7" />
             </Link>
             <p className="mt-5 max-w-[320px] text-[14px] leading-relaxed text-ink-2">
@@ -71,11 +87,11 @@ export function Footer() {
               </span>
             </p>
             <a
-              href="mailto:hello@useroutr.io"
+              href="mailto:hello@useroutr.com"
               className="mt-5 inline-block text-[13px] text-ink-3 underline decoration-rule-2 decoration-from-font underline-offset-4 transition hover:text-ink"
               style={{ fontFamily: "var(--font-mono)" }}
             >
-              hello@useroutr.io
+              hello@useroutr.com
             </a>
           </div>
 
@@ -121,7 +137,7 @@ export function Footer() {
               © {new Date().getFullYear()} Useroutr Labs, Inc.
             </span>
             <a
-              href="https://status.useroutr.io"
+              href="https://status.useroutr.com"
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 rounded-full border border-rule px-3 py-1.5 text-[11.5px] text-ink-2 transition hover:border-ink hover:text-ink"

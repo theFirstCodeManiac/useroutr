@@ -2,7 +2,11 @@
 
 import { useState, useCallback, useMemo } from "react";
 import { useSearchParams } from "next/navigation";
-import { usePayments, type PaymentStatus, type Payment } from "@/hooks/usePayments";
+import {
+  usePayments,
+  type PaymentStatus,
+  type Payment,
+} from "@/hooks/usePayments";
 import { DataTable, type Column } from "@useroutr/ui";
 
 type PaymentWithIndex = Payment & Record<string, unknown>;
@@ -18,19 +22,19 @@ import { EmptyState } from "@/components/brand/EmptyState";
 
 export default function PaymentsPage() {
   const searchParams = useSearchParams();
-  
+
   // State for filtering and pagination
   const [page, setPage] = useState(Number(searchParams.get("page")) || 1);
   const [limit, setLimit] = useState(Number(searchParams.get("limit")) || 10);
   const [status, setStatus] = useState<PaymentStatus | string>(
-    searchParams.get("status") || ""
+    searchParams.get("status") || "",
   );
   const [search, setSearch] = useState(searchParams.get("search") || "");
   const [selectedChain, setSelectedChain] = useState(
-    searchParams.get("chain") || ""
+    searchParams.get("chain") || "",
   );
   const [selectedCurrency, setSelectedCurrency] = useState(
-    searchParams.get("currency") || ""
+    searchParams.get("currency") || "",
   );
   const [sortColumn, setSortColumn] = useState("createdAt");
   const [sortDirection, setSortDirection] = useState<"asc" | "desc">("desc");
@@ -62,7 +66,7 @@ export default function PaymentsPage() {
       newStatus: string = status,
       newSearch: string = search,
       newChain: string = selectedChain,
-      newCurrency: string = selectedCurrency
+      newCurrency: string = selectedCurrency,
     ) => {
       const params = new URLSearchParams();
       if (newPage > 1) params.set("page", String(newPage));
@@ -76,7 +80,7 @@ export default function PaymentsPage() {
       const newUrl = queryString ? `?${queryString}` : "";
       window.history.replaceState(null, "", newUrl);
     },
-    [page, limit, status, search, selectedChain, selectedCurrency]
+    [page, limit, status, search, selectedChain, selectedCurrency],
   );
 
   // Handle filter changes
@@ -122,9 +126,7 @@ export default function PaymentsPage() {
         header: "ID",
         sortable: true,
         render: (payment) => (
-          <span className="font-mono text-xs">
-            {payment.id.slice(0, 8)}...
-          </span>
+          <span className="font-mono text-xs">{payment.id.slice(0, 8)}...</span>
         ),
       },
       {
@@ -144,15 +146,13 @@ export default function PaymentsPage() {
         key: "sourceChain",
         header: "Source",
         sortable: false,
-        render: (payment) =>
-          `${payment.sourceAsset} on ${payment.sourceChain}`,
+        render: (payment) => `${payment.sourceAsset} on ${payment.sourceChain}`,
       },
       {
         key: "destChain",
         header: "Destination",
         sortable: false,
-        render: (payment) =>
-          `${payment.destAsset} on ${payment.destChain}`,
+        render: (payment) => `${payment.destAsset} on ${payment.destChain}`,
       },
       {
         key: "createdAt",
@@ -168,7 +168,7 @@ export default function PaymentsPage() {
           }),
       },
     ],
-    []
+    [],
   );
 
   const hasFilters = !!(status || search || selectedChain || selectedCurrency);
@@ -215,7 +215,7 @@ export default function PaymentsPage() {
           body="Once a customer completes a checkout, every transaction lands here. Create a test payment in sandbox to see it work."
           cta={{
             label: "Read the API",
-            href: "https://docs.useroutr.io",
+            href: "https://docs.useroutr.com",
           }}
         />
       ) : (

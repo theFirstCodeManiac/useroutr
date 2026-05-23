@@ -105,7 +105,7 @@ export function Features() {
 
             <div className="mt-8 flex flex-wrap items-center gap-5">
               <Link
-                href="https://docs.useroutr.io"
+                href="https://docs.useroutr.com"
                 target="_blank"
                 rel="noreferrer"
                 className="magnet"
@@ -267,13 +267,12 @@ function FeatureCard() {
           className="text-[20px] leading-[1.15] tracking-[-0.025em] text-ink md:text-[22px]"
           style={{ fontFamily: "var(--font-display)", fontWeight: 600 }}
         >
-          One link.{" "}
-          <span className="editorial-italic text-ink-2">Any</span> currency.
-          Any rail.
+          One link. <span className="editorial-italic text-ink-2">Any</span>{" "}
+          currency. Any rail.
         </h3>
         <p className="mt-2 text-[14px] leading-relaxed text-ink-3">
-          Drop-in checkout that takes USDC, EURC, card, or bank — and settles
-          to your treasury in seconds. Your branding, our routing.
+          Drop-in checkout that takes USDC, EURC, card, or bank — and settles to
+          your treasury in seconds. Your branding, our routing.
         </p>
       </div>
     </div>
@@ -299,7 +298,9 @@ function CheckoutMethod({
   return (
     <div
       className={`flex items-center gap-3 rounded-xl border bg-bg-card px-3 py-2.5 transition ${
-        selected ? "border-ink shadow-[0_0_0_3px_rgba(14,15,18,0.05)]" : "border-rule"
+        selected
+          ? "border-ink shadow-[0_0_0_3px_rgba(14,15,18,0.05)]"
+          : "border-rule"
       }`}
     >
       <span

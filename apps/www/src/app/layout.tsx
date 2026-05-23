@@ -68,13 +68,13 @@ export const metadata: Metadata = {
   creator: "Useroutr",
   publisher: "Useroutr",
   formatDetection: { email: false, address: false, telephone: false },
-  metadataBase: new URL("https://useroutr.io"),
+  metadataBase: new URL("https://useroutr.com"),
   alternates: { canonical: "/" },
   openGraph: {
     title: "Useroutr — Pay anything. Settle everywhere.",
     description:
       "Non-custodial cross-chain payment infrastructure built on Stellar. Useroutr never holds the money in between.",
-    url: "https://useroutr.io",
+    url: "https://useroutr.com",
     siteName: "Useroutr",
     images: [
       {

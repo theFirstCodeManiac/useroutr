@@ -60,7 +60,7 @@ export function Navbar({ onWaitlistClick }: NavbarProps) {
             </Link>
           ))}
           <Link
-            href="https://docs.useroutr.io"
+            href="https://docs.useroutr.com"
             target="_blank"
             rel="noreferrer"
             className="group inline-flex items-center gap-1 text-[14px] text-ink-2 transition-colors hover:text-ink"
@@ -115,7 +115,7 @@ export function Navbar({ onWaitlistClick }: NavbarProps) {
               </Link>
             ))}
             <Link
-              href="https://docs.useroutr.io"
+              href="https://docs.useroutr.com"
               target="_blank"
               rel="noreferrer"
               onClick={() => setOpen(false)}

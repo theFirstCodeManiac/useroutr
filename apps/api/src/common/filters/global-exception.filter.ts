@@ -63,7 +63,7 @@ export class GlobalExceptionFilter implements ExceptionFilter {
       error: {
         code,
         message,
-        docs: `https://docs.useroutr.io/errors/${code}`,
+        docs: `https://docs.useroutr.com/errors/${code}`,
         ...(details ? { details } : {}),
       },
     };

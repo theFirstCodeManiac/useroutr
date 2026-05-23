@@ -48,7 +48,14 @@ export function AuthIllustration({ variant, className }: Props) {
       </g>
 
       {/* Soft indigo wash, top */}
-      <rect x="0" y="0" width="480" height="240" fill="var(--accent-soft)" opacity="0.6" />
+      <rect
+        x="0"
+        y="0"
+        width="480"
+        height="240"
+        fill="var(--accent-soft)"
+        opacity="0.6"
+      />
 
       {variant === "login" && <Login />}
       {variant === "register" && <Register />}
@@ -249,13 +256,34 @@ function Register() {
   ];
   return (
     <g>
-      <text x="40" y="120" fontSize="11" fontFamily="var(--font-mono)" fill="var(--faint)" letterSpacing="1.4">
+      <text
+        x="40"
+        y="120"
+        fontSize="11"
+        fontFamily="var(--font-mono)"
+        fill="var(--faint)"
+        letterSpacing="1.4"
+      >
         START BUILDING
       </text>
-      <text x="40" y="178" fontSize="40" fontFamily="var(--font-display)" fontWeight="600" fill="var(--lead)">
+      <text
+        x="40"
+        y="178"
+        fontSize="40"
+        fontFamily="var(--font-display)"
+        fontWeight="600"
+        fill="var(--lead)"
+      >
         Open an account.
       </text>
-      <text x="40" y="222" fontSize="40" fontFamily="var(--font-fraunces)" fontStyle="italic" fill="var(--body)">
+      <text
+        x="40"
+        y="222"
+        fontSize="40"
+        fontFamily="var(--font-fraunces)"
+        fontStyle="italic"
+        fill="var(--body)"
+      >
         Ship in a sprint.
       </text>
 
@@ -277,37 +305,83 @@ function Register() {
             strokeWidth={s.current ? "1.5" : "1"}
           />
           {/* Step number */}
-          <text x="58" y={328 + i * 56} fontSize="12" fontFamily="var(--font-mono)" fill="var(--faint)">
+          <text
+            x="58"
+            y={328 + i * 56}
+            fontSize="12"
+            fontFamily="var(--font-mono)"
+            fill="var(--faint)"
+          >
             {s.n}
           </text>
           {/* Label */}
-          <text x="92" y={328 + i * 56} fontSize="14" fontFamily="var(--font-display)" fontWeight="500" fill="var(--lead)">
+          <text
+            x="92"
+            y={328 + i * 56}
+            fontSize="14"
+            fontFamily="var(--font-display)"
+            fontWeight="500"
+            fill="var(--lead)"
+          >
             {s.label}
           </text>
           {/* Status pill */}
           {s.done && (
             <g transform={`translate(396 ${314 + i * 56})`}>
               <circle cx="10" cy="10" r="10" fill="var(--accent)" />
-              <path d="M5 10.5 L9 14 L15 7" stroke="#fff" strokeWidth="1.6" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+              <path
+                d="M5 10.5 L9 14 L15 7"
+                stroke="#fff"
+                strokeWidth="1.6"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
             </g>
           )}
           {s.current && (
             <g transform={`translate(396 ${314 + i * 56})`}>
-              <circle cx="10" cy="10" r="9" fill="none" stroke="var(--accent)" strokeWidth="1.5" />
+              <circle
+                cx="10"
+                cy="10"
+                r="9"
+                fill="none"
+                stroke="var(--accent)"
+                strokeWidth="1.5"
+              />
               <circle cx="10" cy="10" r="3.5" fill="var(--accent)">
-                <animate attributeName="r" values="3.5;5;3.5" dur="2s" repeatCount="indefinite" />
+                <animate
+                  attributeName="r"
+                  values="3.5;5;3.5"
+                  dur="2s"
+                  repeatCount="indefinite"
+                />
               </circle>
             </g>
           )}
           {!s.done && !s.current && (
             <g transform={`translate(396 ${314 + i * 56})`}>
-              <circle cx="10" cy="10" r="9" fill="none" stroke="var(--rule2)" strokeWidth="1" strokeDasharray="2 2" />
+              <circle
+                cx="10"
+                cy="10"
+                r="9"
+                fill="none"
+                stroke="var(--rule2)"
+                strokeWidth="1"
+                strokeDasharray="2 2"
+              />
             </g>
           )}
         </motion.g>
       ))}
 
-      <text x="40" y="554" fontSize="11" fontFamily="var(--font-mono)" fill="var(--faint)">
+      <text
+        x="40"
+        y="554"
+        fontSize="11"
+        fontFamily="var(--font-mono)"
+        fill="var(--faint)"
+      >
         ↘ AVERAGE TIME · 4 MIN 32 SEC
       </text>
     </g>
@@ -318,13 +392,34 @@ function Register() {
 function ForgotPassword() {
   return (
     <g>
-      <text x="40" y="120" fontSize="11" fontFamily="var(--font-mono)" fill="var(--faint)" letterSpacing="1.4">
+      <text
+        x="40"
+        y="120"
+        fontSize="11"
+        fontFamily="var(--font-mono)"
+        fill="var(--faint)"
+        letterSpacing="1.4"
+      >
         RECOVER ACCESS
       </text>
-      <text x="40" y="178" fontSize="40" fontFamily="var(--font-display)" fontWeight="600" fill="var(--lead)">
+      <text
+        x="40"
+        y="178"
+        fontSize="40"
+        fontFamily="var(--font-display)"
+        fontWeight="600"
+        fill="var(--lead)"
+      >
         We&apos;ll mail
       </text>
-      <text x="40" y="222" fontSize="40" fontFamily="var(--font-fraunces)" fontStyle="italic" fill="var(--body)">
+      <text
+        x="40"
+        y="222"
+        fontSize="40"
+        fontFamily="var(--font-fraunces)"
+        fontStyle="italic"
+        fill="var(--body)"
+      >
         you a key.
       </text>
 
@@ -334,14 +429,46 @@ function ForgotPassword() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.7, delay: 0.2 }}
       >
-        <rect x="100" y="320" width="280" height="180" rx="6" fill="var(--bg-card)" stroke="var(--lead)" strokeWidth="1.4" />
-        <path d="M100 320 L240 410 L380 320" fill="none" stroke="var(--lead)" strokeWidth="1.4" />
-        <path d="M100 500 L210 410" fill="none" stroke="var(--rule2)" strokeWidth="1.2" />
-        <path d="M380 500 L270 410" fill="none" stroke="var(--rule2)" strokeWidth="1.2" />
+        <rect
+          x="100"
+          y="320"
+          width="280"
+          height="180"
+          rx="6"
+          fill="var(--bg-card)"
+          stroke="var(--lead)"
+          strokeWidth="1.4"
+        />
+        <path
+          d="M100 320 L240 410 L380 320"
+          fill="none"
+          stroke="var(--lead)"
+          strokeWidth="1.4"
+        />
+        <path
+          d="M100 500 L210 410"
+          fill="none"
+          stroke="var(--rule2)"
+          strokeWidth="1.2"
+        />
+        <path
+          d="M380 500 L270 410"
+          fill="none"
+          stroke="var(--rule2)"
+          strokeWidth="1.2"
+        />
 
         {/* Wax seal */}
         <circle cx="240" cy="430" r="20" fill="var(--accent)" />
-        <text x="240" y="436" textAnchor="middle" fontSize="14" fontFamily="var(--font-display)" fontWeight="700" fill="#fff">
+        <text
+          x="240"
+          y="436"
+          textAnchor="middle"
+          fontSize="14"
+          fontFamily="var(--font-display)"
+          fontWeight="700"
+          fill="#fff"
+        >
           U
         </text>
       </motion.g>
@@ -353,11 +480,46 @@ function ForgotPassword() {
         transition={{ duration: 0.7, delay: 0.5 }}
         style={{ transformOrigin: "240px 230px" }}
       >
-        <circle cx="180" cy="240" r="22" fill="none" stroke="var(--lead)" strokeWidth="2" />
-        <circle cx="180" cy="240" r="8" fill="var(--bg-card)" stroke="var(--lead)" strokeWidth="1.4" />
-        <line x1="200" y1="240" x2="300" y2="240" stroke="var(--lead)" strokeWidth="2" />
-        <line x1="280" y1="240" x2="280" y2="252" stroke="var(--lead)" strokeWidth="2" />
-        <line x1="290" y1="240" x2="290" y2="248" stroke="var(--lead)" strokeWidth="2" />
+        <circle
+          cx="180"
+          cy="240"
+          r="22"
+          fill="none"
+          stroke="var(--lead)"
+          strokeWidth="2"
+        />
+        <circle
+          cx="180"
+          cy="240"
+          r="8"
+          fill="var(--bg-card)"
+          stroke="var(--lead)"
+          strokeWidth="1.4"
+        />
+        <line
+          x1="200"
+          y1="240"
+          x2="300"
+          y2="240"
+          stroke="var(--lead)"
+          strokeWidth="2"
+        />
+        <line
+          x1="280"
+          y1="240"
+          x2="280"
+          y2="252"
+          stroke="var(--lead)"
+          strokeWidth="2"
+        />
+        <line
+          x1="290"
+          y1="240"
+          x2="290"
+          y2="248"
+          stroke="var(--lead)"
+          strokeWidth="2"
+        />
       </motion.g>
     </g>
   );
@@ -367,13 +529,34 @@ function ForgotPassword() {
 function ResetPassword() {
   return (
     <g>
-      <text x="40" y="120" fontSize="11" fontFamily="var(--font-mono)" fill="var(--faint)" letterSpacing="1.4">
+      <text
+        x="40"
+        y="120"
+        fontSize="11"
+        fontFamily="var(--font-mono)"
+        fill="var(--faint)"
+        letterSpacing="1.4"
+      >
         SET A NEW PASSWORD
       </text>
-      <text x="40" y="178" fontSize="40" fontFamily="var(--font-display)" fontWeight="600" fill="var(--lead)">
+      <text
+        x="40"
+        y="178"
+        fontSize="40"
+        fontFamily="var(--font-display)"
+        fontWeight="600"
+        fill="var(--lead)"
+      >
         Lock it in.
       </text>
-      <text x="40" y="222" fontSize="40" fontFamily="var(--font-fraunces)" fontStyle="italic" fill="var(--body)">
+      <text
+        x="40"
+        y="222"
+        fontSize="40"
+        fontFamily="var(--font-fraunces)"
+        fontStyle="italic"
+        fill="var(--body)"
+      >
         Pick something good.
       </text>
 
@@ -390,7 +573,14 @@ function ResetPassword() {
           strokeWidth="2.5"
           strokeLinecap="round"
         />
-        <rect x="160" y="320" width="160" height="120" rx="12" fill="var(--accent)" />
+        <rect
+          x="160"
+          y="320"
+          width="160"
+          height="120"
+          rx="12"
+          fill="var(--accent)"
+        />
         <circle cx="240" cy="370" r="14" fill="var(--bg-card)" />
         <rect x="237" y="378" width="6" height="22" fill="var(--bg-card)" />
       </motion.g>
@@ -410,7 +600,13 @@ function ResetPassword() {
               width="120"
               height="6"
               rx="3"
-              fill={i === 2 ? "var(--accent)" : i === 1 ? "var(--amber)" : "var(--rule2)"}
+              fill={
+                i === 2
+                  ? "var(--accent)"
+                  : i === 1
+                    ? "var(--amber)"
+                    : "var(--rule2)"
+              }
             />
             <text
               x={i * 140}
@@ -433,13 +629,34 @@ function ResetPassword() {
 function Verify() {
   return (
     <g>
-      <text x="40" y="120" fontSize="11" fontFamily="var(--font-mono)" fill="var(--faint)" letterSpacing="1.4">
+      <text
+        x="40"
+        y="120"
+        fontSize="11"
+        fontFamily="var(--font-mono)"
+        fill="var(--faint)"
+        letterSpacing="1.4"
+      >
         ALMOST THERE
       </text>
-      <text x="40" y="178" fontSize="40" fontFamily="var(--font-display)" fontWeight="600" fill="var(--lead)">
+      <text
+        x="40"
+        y="178"
+        fontSize="40"
+        fontFamily="var(--font-display)"
+        fontWeight="600"
+        fill="var(--lead)"
+      >
         Check your
       </text>
-      <text x="40" y="222" fontSize="40" fontFamily="var(--font-fraunces)" fontStyle="italic" fill="var(--body)">
+      <text
+        x="40"
+        y="222"
+        fontSize="40"
+        fontFamily="var(--font-fraunces)"
+        fontStyle="italic"
+        fill="var(--body)"
+      >
         inbox.
       </text>
 
@@ -449,12 +666,54 @@ function Verify() {
         transition={{ duration: 0.7, delay: 0.2 }}
       >
         {/* Envelope back */}
-        <rect x="100" y="320" width="280" height="180" rx="6" fill="var(--bg-card)" stroke="var(--lead)" strokeWidth="1.4" />
+        <rect
+          x="100"
+          y="320"
+          width="280"
+          height="180"
+          rx="6"
+          fill="var(--bg-card)"
+          stroke="var(--lead)"
+          strokeWidth="1.4"
+        />
         {/* Letter peeking out */}
-        <rect x="120" y="288" width="240" height="160" rx="4" fill="var(--accent-soft)" stroke="var(--accent)" strokeWidth="1.2" />
-        <line x1="140" y1="320" x2="320" y2="320" stroke="var(--lead)" strokeWidth="0.8" strokeOpacity="0.4" />
-        <line x1="140" y1="340" x2="280" y2="340" stroke="var(--lead)" strokeWidth="0.8" strokeOpacity="0.4" />
-        <line x1="140" y1="360" x2="300" y2="360" stroke="var(--lead)" strokeWidth="0.8" strokeOpacity="0.4" />
+        <rect
+          x="120"
+          y="288"
+          width="240"
+          height="160"
+          rx="4"
+          fill="var(--accent-soft)"
+          stroke="var(--accent)"
+          strokeWidth="1.2"
+        />
+        <line
+          x1="140"
+          y1="320"
+          x2="320"
+          y2="320"
+          stroke="var(--lead)"
+          strokeWidth="0.8"
+          strokeOpacity="0.4"
+        />
+        <line
+          x1="140"
+          y1="340"
+          x2="280"
+          y2="340"
+          stroke="var(--lead)"
+          strokeWidth="0.8"
+          strokeOpacity="0.4"
+        />
+        <line
+          x1="140"
+          y1="360"
+          x2="300"
+          y2="360"
+          stroke="var(--lead)"
+          strokeWidth="0.8"
+          strokeOpacity="0.4"
+        />
         <text
           x="140"
           y="388"
@@ -462,10 +721,15 @@ function Verify() {
           fontFamily="var(--font-mono)"
           fill="var(--accent)"
         >
-          ↘ verify-here.useroutr.io
+          ↘ verify-here.useroutr.com
         </text>
         {/* Envelope flap (opened) */}
-        <path d="M100 320 L240 220 L380 320" fill="var(--bg-soft)" stroke="var(--lead)" strokeWidth="1.4" />
+        <path
+          d="M100 320 L240 220 L380 320"
+          fill="var(--bg-soft)"
+          stroke="var(--lead)"
+          strokeWidth="1.4"
+        />
       </motion.g>
 
       {/* Floating checks */}
