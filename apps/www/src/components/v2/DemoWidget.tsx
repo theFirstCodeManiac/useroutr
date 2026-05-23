@@ -23,6 +23,7 @@ import {
   type RouteResult,
   type SendDestination,
 } from "@/lib/demo";
+import { BrandLogo } from "./BrandLogo";
 
 type Tab = "receive" | "send";
 type Phase = "form" | "running" | "done";
@@ -372,15 +373,7 @@ function MethodButton({
           : "border-rule hover:border-rule-2",
       )}
     >
-      <span
-        className={cn(
-          "grid size-8 shrink-0 place-items-center rounded-full text-[12px] font-medium",
-          method.tone,
-        )}
-        style={{ fontFamily: "var(--font-display)" }}
-      >
-        {method.glyph}
-      </span>
+      <BrandLogo id={method.brand} size="sm" />
       <span className="min-w-0 flex-1">
         <span className="block truncate text-[13px] font-medium text-ink">
           {method.label}
@@ -416,15 +409,7 @@ function DestButton({
           : "border-rule hover:border-rule-2",
       )}
     >
-      <span
-        className={cn(
-          "grid size-8 shrink-0 place-items-center rounded-full text-[12px] font-medium",
-          dest.tone,
-        )}
-        style={{ fontFamily: "var(--font-display)" }}
-      >
-        {dest.glyph}
-      </span>
+      <BrandLogo id={dest.brand} size="sm" />
       <span className="min-w-0 flex-1">
         <span className="block truncate text-[13px] font-medium text-ink">
           {dest.label}

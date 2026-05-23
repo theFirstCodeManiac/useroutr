@@ -8,8 +8,8 @@ export type ReceiveMethod = {
   id: string;
   label: string;
   sublabel: string;
-  glyph: string;
-  tone: string;
+  /** BrandLogo id — looked up in BRAND_LOGOS. */
+  brand: string;
   rate: number;
 };
 
@@ -18,32 +18,28 @@ export const RECEIVE_METHODS: ReceiveMethod[] = [
     id: "usdc-stellar",
     label: "USDC",
     sublabel: "Stellar · 1.00 USD",
-    glyph: "$",
-    tone: "bg-[#2775ca] text-white",
+    brand: "usdc",
     rate: 1,
   },
   {
     id: "xlm",
     label: "XLM",
     sublabel: "Stellar · 0.352 USD",
-    glyph: "★",
-    tone: "bg-black text-white",
+    brand: "xlm",
     rate: 0.3523,
   },
   {
     id: "eurc-stellar",
     label: "EURC",
     sublabel: "Stellar · 1.089 USD",
-    glyph: "€",
-    tone: "bg-[#3b5af1] text-white",
+    brand: "eurc",
     rate: 1.0887,
   },
   {
     id: "ach",
     label: "Bank transfer",
     sublabel: "ACH · 1-2 business days",
-    glyph: "B",
-    tone: "bg-bg-soft text-ink border border-rule",
+    brand: "bank",
     rate: 1,
   },
 ];
@@ -52,8 +48,7 @@ export type SendDestination = {
   id: string;
   label: string;
   sublabel: string;
-  glyph: string;
-  tone: string;
+  brand: string;
 };
 
 export const SEND_DESTINATIONS: SendDestination[] = [
@@ -61,29 +56,25 @@ export const SEND_DESTINATIONS: SendDestination[] = [
     id: "stellar",
     label: "Stellar address",
     sublabel: "GA••• · USDC, XLM, EURC",
-    glyph: "★",
-    tone: "bg-black text-white",
+    brand: "stellar",
   },
   {
     id: "bank",
     label: "Bank account",
     sublabel: "ACH · SWIFT · SEPA",
-    glyph: "B",
-    tone: "bg-bg-soft text-ink border border-rule",
+    brand: "bank",
   },
   {
     id: "mobile",
     label: "Mobile money",
     sublabel: "MoneyGram · 174 countries",
-    glyph: "M",
-    tone: "bg-accent text-white",
+    brand: "moneygram",
   },
   {
     id: "card",
     label: "Debit card",
     sublabel: "Visa Direct · Mastercard Send",
-    glyph: "V",
-    tone: "bg-[#1a1f71] text-white",
+    brand: "visa",
   },
 ];
 

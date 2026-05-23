@@ -12,6 +12,7 @@ import {
   ScanLine,
   Wallet,
 } from "lucide-react";
+import { BrandLogo } from "./BrandLogo";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -216,23 +217,20 @@ function FeatureCard() {
           {/* Payment options */}
           <div className="space-y-2">
             <CheckoutMethod
-              glyph="$"
-              tone="bg-[#2775ca] text-white"
+              brand="usdc"
               label="USDC"
               sublabel="Stellar"
               amount="49.00 USDC"
               selected
             />
             <CheckoutMethod
-              glyph="V"
-              tone="bg-[#1a1f71] text-white"
+              brand="visa"
               label="Card"
               sublabel="Visa · Mastercard"
               amount="$49.00"
             />
             <CheckoutMethod
-              glyph="B"
-              tone="bg-bg-card text-ink border border-rule"
+              brand="bank"
               label="Bank transfer"
               sublabel="ACH · SEPA"
               amount="$49.00"
@@ -281,15 +279,13 @@ function FeatureCard() {
 
 /* ---------------------------------------------------------- */
 function CheckoutMethod({
-  glyph,
-  tone,
+  brand,
   label,
   sublabel,
   amount,
   selected,
 }: {
-  glyph: string;
-  tone: string;
+  brand: string;
   label: string;
   sublabel: string;
   amount: string;
@@ -303,12 +299,7 @@ function CheckoutMethod({
           : "border-rule"
       }`}
     >
-      <span
-        className={`grid size-7 shrink-0 place-items-center rounded-full text-[11px] font-medium ${tone}`}
-        style={{ fontFamily: "var(--font-display)" }}
-      >
-        {glyph}
-      </span>
+      <BrandLogo id={brand} size="sm" />
       <span className="flex-1">
         <span className="block text-[13px] font-medium text-ink">{label}</span>
         <span

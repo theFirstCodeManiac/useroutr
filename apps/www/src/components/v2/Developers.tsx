@@ -5,6 +5,8 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { ArrowUpRight, Copy } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { BrandLogo } from "./BrandLogo";
+import { BRAND_LOGOS } from "@/lib/brand-logos";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -65,22 +67,14 @@ const snippets: Record<Lang, string[]> = {
 };
 
 const integrations = [
-  { glyph: "S", label: "Stripe", tone: "bg-[#635bff] text-white" },
-  { glyph: "Q", label: "QuickBooks", tone: "bg-[#2ca01c] text-white" },
-  { glyph: "X", label: "Xero", tone: "bg-[#13b5ea] text-white" },
-  { glyph: "N", label: "NetSuite", tone: "bg-ink text-bg" },
-  { glyph: "Z", label: "Zapier", tone: "bg-[#ff4a00] text-white" },
-  { glyph: "S", label: "Slack", tone: "bg-[#4a154b] text-white" },
-  {
-    glyph: "N",
-    label: "Notion",
-    tone: "bg-bg-card text-ink border border-rule",
-  },
-  {
-    glyph: "{ }",
-    label: "Webhooks",
-    tone: "bg-bg-soft text-ink border border-rule",
-  },
+  "stripe",
+  "quickbooks",
+  "xero",
+  "netsuite",
+  "zapier",
+  "slack",
+  "notion",
+  "webhooks",
 ];
 
 export function Developers() {
@@ -240,25 +234,17 @@ export function Developers() {
             </p>
 
             <div className="mt-6 grid grid-cols-4 gap-2">
-              {integrations.map((it) => (
+              {integrations.map((id) => (
                 <div
-                  key={it.label}
+                  key={id}
                   className="group flex flex-col items-center gap-2 rounded-2xl border border-rule bg-bg-card p-3 transition hover:border-rule-2"
                 >
-                  <span
-                    className={cn(
-                      "grid size-9 place-items-center rounded-xl text-[13px] font-medium",
-                      it.tone,
-                    )}
-                    style={{ fontFamily: "var(--font-display)" }}
-                  >
-                    {it.glyph}
-                  </span>
+                  <BrandLogo id={id} size="md" shape="rounded" />
                   <span
                     className="text-[10px] uppercase tracking-[0.12em] text-ink-3"
                     style={{ fontFamily: "var(--font-mono)" }}
                   >
-                    {it.label}
+                    {BRAND_LOGOS[id]?.label ?? id}
                   </span>
                 </div>
               ))}
