@@ -2,9 +2,9 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Menu, X, ArrowUpRight, ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Wordmark } from "./Wordmark";
+import { Wordmark } from "@/components/site/Wordmark";
 
 interface NavbarProps {
   onWaitlistClick: () => void;
@@ -38,10 +38,10 @@ export function Navbar({ onWaitlistClick }: NavbarProps) {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-200",
+        "sticky top-0 z-40 transition-all duration-200",
         scrolled
           ? "border-b border-rule bg-bg/85 backdrop-blur"
-          : "border-b border-transparent bg-transparent",
+          : "border-b border-transparent bg-bg/0",
       )}
     >
       <div className="container-x flex h-[68px] items-center justify-between">
@@ -66,7 +66,10 @@ export function Navbar({ onWaitlistClick }: NavbarProps) {
             className="group inline-flex items-center gap-1 text-[14px] text-ink-2 transition-colors hover:text-ink"
           >
             Docs
-            <ArrowUpRight className="size-3.5 opacity-60 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100" />
+            <ArrowUpRight
+              className="size-3.5 opacity-60 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:opacity-100"
+              strokeWidth={1.6}
+            />
           </Link>
         </nav>
 
@@ -83,7 +86,7 @@ export function Navbar({ onWaitlistClick }: NavbarProps) {
             className="hidden md:inline-flex"
           >
             <span className="pill pill-dark">
-              Open an account
+              Get started
               <ArrowRight className="size-4" strokeWidth={1.6} />
             </span>
           </button>
@@ -99,7 +102,7 @@ export function Navbar({ onWaitlistClick }: NavbarProps) {
       </div>
 
       {open && (
-        <div className="fixed inset-x-0 top-[68px] z-40 border-b border-rule bg-bg md:hidden">
+        <div className="absolute inset-x-0 top-[68px] z-40 border-b border-rule bg-bg md:hidden">
           <div className="container-x flex flex-col gap-1 py-5">
             {links.map((link) => (
               <Link
@@ -119,7 +122,7 @@ export function Navbar({ onWaitlistClick }: NavbarProps) {
               className="flex items-center justify-between rounded-md px-2 py-3 text-lg text-ink"
             >
               Docs
-              <ArrowUpRight className="size-4 text-ink-3" />
+              <ArrowUpRight className="size-4 text-ink-3" strokeWidth={1.6} />
             </Link>
             <Link
               href="/auth/login"
@@ -137,7 +140,7 @@ export function Navbar({ onWaitlistClick }: NavbarProps) {
               className="mt-3"
             >
               <span className="pill pill-dark w-full justify-center">
-                Open an account
+                Get started
                 <ArrowRight className="size-4" strokeWidth={1.6} />
               </span>
             </button>

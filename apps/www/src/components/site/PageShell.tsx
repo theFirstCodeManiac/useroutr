@@ -6,8 +6,8 @@ import {
   useContext,
   type ReactNode,
 } from "react";
-import { Navbar } from "./Navbar";
-import { Footer } from "./Footer";
+import { Navbar } from "@/components/v2/Navbar";
+import { Footer } from "@/components/v2/Footer";
 import { WaitlistModal } from "./WaitlistModal";
 
 interface WaitlistApi {
@@ -34,7 +34,7 @@ export function PageShell({ children }: { children: ReactNode }) {
   return (
     <WaitlistCtx.Provider value={api}>
       <Navbar onWaitlistClick={api.open} />
-      <main className="pt-[68px]">{children}</main>
+      <main>{children}</main>
       <Footer />
       <WaitlistModal open={open} onOpenChange={setOpen} />
     </WaitlistCtx.Provider>

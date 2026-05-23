@@ -13,6 +13,8 @@ import { FilterBar } from "@/components/payments/FilterBar";
 import { PaymentDetailDrawer } from "@/components/payments/PaymentDetailDrawer";
 import { ExportButton } from "@/components/payments/ExportButton";
 import { formatCurrency } from "@/lib/utils";
+import { PageHeader } from "@/components/brand/PageHeader";
+import { EmptyState } from "@/components/brand/EmptyState";
 
 export default function PaymentsPage() {
   const searchParams = useSearchParams();
@@ -169,20 +171,28 @@ export default function PaymentsPage() {
     []
   );
 
+  const hasFilters = !!(status || search || selectedChain || selectedCurrency);
+  const showEmptyState = !isLoading && payments.length === 0 && !hasFilters;
+
   return (
-    <div className="space-y-6">
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h2 className="font-display text-xl font-semibold text-foreground">
-            Payments
-          </h2>
-          <p className="mt-1 text-sm text-muted-foreground">
-            {totalPayments} total transactions
-          </p>
-        </div>
-        <ExportButton payments={payments} isLoading={isLoading} />
-      </div>
+    <div className="space-y-8 dashboard-enter">
+      <PageHeader
+        eyebrow="Payments"
+        title={
+          <>
+            Every transaction,{" "}
+            <span className="editorial-italic text-muted-foreground">
+              in one place.
+            </span>
+          </>
+        }
+        description={
+          totalPayments > 0
+            ? `${totalPayments.toLocaleString()} transactions across all chains and currencies.`
+            : "Once a customer completes a checkout, every transaction lands here."
+        }
+        actions={<ExportButton payments={payments} isLoading={isLoading} />}
+      />
 
       {/* Search and Filters */}
       <div className="flex flex-col gap-4">
@@ -197,18 +207,30 @@ export default function PaymentsPage() {
         />
       </div>
 
-      {/* Table */}
-      <DataTable<PaymentWithIndex>
-        columns={columns}
-        data={payments as PaymentWithIndex[]}
-        isLoading={isLoading}
-        loadingRows={limit}
-        emptyMessage="No payments found"
-        onRowClick={handleRowClick}
-        sortColumn={sortColumn}
-        sortDirection={sortDirection}
-        onSort={handleSort}
-      />
+      {/* Empty state — only shown when no filters are active */}
+      {showEmptyState ? (
+        <EmptyState
+          variant="payments"
+          title="No payments yet"
+          body="Once a customer completes a checkout, every transaction lands here. Create a test payment in sandbox to see it work."
+          cta={{
+            label: "Read the API",
+            href: "https://docs.useroutr.io",
+          }}
+        />
+      ) : (
+        <DataTable<PaymentWithIndex>
+          columns={columns}
+          data={payments as PaymentWithIndex[]}
+          isLoading={isLoading}
+          loadingRows={limit}
+          emptyMessage="No payments match these filters."
+          onRowClick={handleRowClick}
+          sortColumn={sortColumn}
+          sortDirection={sortDirection}
+          onSort={handleSort}
+        />
+      )}
 
       {/* Pagination */}
       <Pagination

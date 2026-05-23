@@ -16,6 +16,7 @@ import { CancelConfirmationModal } from "@/components/payouts/CancelConfirmation
 import { BatchGroupHeader } from "@/components/payouts/BatchGroupHeader";
 import { formatCurrency, truncateAddress } from "@/lib/utils";
 import { useToast } from "@useroutr/ui";
+import { PageHeader } from "@/components/brand/PageHeader";
 
 type PayoutWithIndex = Payout & Record<string, unknown>;
 
@@ -371,27 +372,32 @@ export default function PayoutsPage() {
   );
 
   return (
-    <div className="space-y-6">
-      {/* ── Header ───────────────────────────────────────────────────────────── */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h2 className="font-display text-xl font-semibold text-foreground">
-            Payout History
-          </h2>
-          <div className="mt-1 text-sm text-muted-foreground">
-            {isLoading ? (
-              <Skeleton className="h-4 w-32" />
-            ) : (
-              `${totalPayouts.toLocaleString()} total payouts`
-            )}
-          </div>
-        </div>
-        <PayoutExportButton
-          payouts={payouts}
-          isLoading={isLoading}
-          filters={filters}
-        />
-      </div>
+    <div className="space-y-8 dashboard-enter">
+      <PageHeader
+        eyebrow="Payouts"
+        title={
+          <>
+            Send to{" "}
+            <span className="editorial-italic text-muted-foreground">
+              anyone, anywhere.
+            </span>
+          </>
+        }
+        description={
+          isLoading
+            ? "Loading…"
+            : totalPayouts > 0
+              ? `${totalPayouts.toLocaleString()} payouts across bank, mobile money, and crypto destinations.`
+              : "Single or bulk to bank accounts, mobile money wallets, and self-custody crypto wallets."
+        }
+        actions={
+          <PayoutExportButton
+            payouts={payouts}
+            isLoading={isLoading}
+            filters={filters}
+          />
+        }
+      />
 
       {/* ── Summary Cards ──────────────────────────────────────────────────────── */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-4">
