@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { Wordmark } from "@/components/site/Wordmark";
+import { BrandLogo } from "./BrandLogo";
+import { BRAND_LOGOS } from "@/lib/brand-logos";
 
 type LinkItem = { label: string; href: string; external?: boolean };
 
@@ -56,13 +58,9 @@ const columns: { title: string; links: LinkItem[] }[] = [
 ];
 
 const socials = [
-  { label: "GitHub", href: "https://github.com/useroutr", glyph: "↗" },
-  { label: "X", href: "https://x.com/useroutr", glyph: "𝕏" },
-  {
-    label: "LinkedIn",
-    href: "https://linkedin.com/company/useroutr",
-    glyph: "in",
-  },
+  { brand: "github", href: "https://github.com/useroutr" },
+  { brand: "x", href: "https://x.com/useroutr" },
+  { brand: "linkedin", href: "https://linkedin.com/company/useroutr" },
 ];
 
 export function Footer() {
@@ -147,20 +145,22 @@ export function Footer() {
               All systems normal
             </a>
           </div>
-          <div className="flex items-center gap-1">
-            {socials.map((s) => (
-              <a
-                key={s.label}
-                href={s.href}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={s.label}
-                className="grid size-8 place-items-center rounded-full border border-rule text-[12px] text-ink-2 transition hover:border-ink hover:text-ink"
-                style={{ fontFamily: "var(--font-mono)" }}
-              >
-                {s.glyph}
-              </a>
-            ))}
+          <div className="flex items-center gap-1.5">
+            {socials.map((s) => {
+              const label = BRAND_LOGOS[s.brand]?.label ?? s.brand;
+              return (
+                <a
+                  key={s.brand}
+                  href={s.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={label}
+                  className="grid size-9 place-items-center rounded-full border border-rule transition hover:border-ink"
+                >
+                  <BrandLogo id={s.brand} size="xs" shape="square" />
+                </a>
+              );
+            })}
           </div>
         </div>
       </div>

@@ -1,13 +1,25 @@
+import {
+  Banknote,
+  Building2,
+  CreditCard,
+  Landmark,
+  Smartphone,
+  Webhook,
+  type LucideIcon,
+} from "lucide-react";
+
 /**
  * Single source of truth for every brand mark rendered across the site —
  * crypto assets, card networks, bank rails, mobile money, and integrations.
  *
- * When you add a new SVG to /public/currency-logo (or any other folder under
- * /public), register it here with `src`. If a brand doesn't have an official
- * SVG yet, set `glyph` + `tone` and the component renders a clean colored
- * badge as a fallback. The rest of the site (DemoWidget, Features card,
- * Developers integrations grid, etc.) reads from this file — never hardcode
- * a `<span>$</span>` in a feature component again.
+ * Resolution order in <BrandLogo>:
+ *   1. `src`   — official SVG file under /public (preferred for real brands)
+ *   2. `icon`  — Lucide icon component (preferred for generic categories)
+ *   3. `glyph` — colored badge fallback when nothing else fits
+ *
+ * To add a new brand: drop the SVG under /public/<category>-logo/ and add
+ * an entry with `src`. To add a new generic category (e.g. SEPA, IBAN),
+ * use `icon` + `tone`. Glyph fallback is the last resort.
  */
 
 export type BrandCategory =
@@ -23,19 +35,24 @@ export interface BrandLogoEntry {
   /** Display label shown when `withLabel` is true. */
   label: string;
   category: BrandCategory;
-  /** Path to the SVG under /public. Preferred when available. */
+  /** Path to the icon-style SVG under /public. Preferred for badges. */
   src?: string;
-  /** Fallback character(s) rendered inside a colored badge when `src` is absent. */
+  /**
+   * Path to a wordmark SVG (logo + brand name as a horizontal lockup).
+   * When set, surfaces that opt in (e.g. TrustStrip marquee) render this
+   * alone — no separate text label — for a cleaner brand presentation.
+   */
+  srcLockup?: string;
+  /** Lucide icon component — used when no src, for generic categories. */
+  icon?: LucideIcon;
+  /** Single character(s) rendered inside a colored badge — last-resort fallback. */
   glyph?: string;
-  /** Tailwind classes for the fallback badge background+text color. */
+  /** Tailwind classes for the badge background + text color (icon/glyph cases). */
   tone?: string;
 }
 
-/**
- * Keyed by id. Names mirror what designers and PMs would type.
- */
 export const BRAND_LOGOS: Record<string, BrandLogoEntry> = {
-  /* -------------------- Crypto / stablecoins / chains -------------------- */
+  /* ----------------------------- Crypto / chains ----------------------------- */
   usdc: {
     id: "usdc",
     label: "USDC",
@@ -55,11 +72,20 @@ export const BRAND_LOGOS: Record<string, BrandLogoEntry> = {
     src: "/currency-logo/stellar-xlm-logo.svg",
   },
   stellar: {
-    // Network alias — same mark as XLM
     id: "stellar",
     label: "Stellar",
     category: "crypto",
     src: "/currency-logo/stellar-xlm-logo.svg",
+    /** Official Stellar wordmark from the Foundation press kit. */
+    srcLockup: "/brand-mark/stellar.png",
+  },
+  "stellar-foundation": {
+    id: "stellar-foundation",
+    label: "Stellar Development Foundation",
+    category: "integration",
+    /** Official SDF wordmark — useful on the /about investor strip. */
+    src: "/brand-mark/stellar-foundation.svg",
+    srcLockup: "/brand-mark/stellar-foundation.svg",
   },
   eth: {
     id: "eth",
@@ -79,9 +105,14 @@ export const BRAND_LOGOS: Record<string, BrandLogoEntry> = {
     category: "crypto",
     src: "/currency-logo/optimism-ethereum-op-logo.svg",
   },
+  polygon: {
+    id: "polygon",
+    label: "Polygon",
+    category: "crypto",
+    src: "/currency-logo/polygon.svg",
+  },
 
-  /* Brands without SVGs yet — fallback to glyph + tone. Drop in a real
-     SVG and add `src` to upgrade. */
+  /* No-SVG-yet crypto — keep as styled fallbacks until we have proper marks */
   eurc: {
     id: "eurc",
     label: "EURC",
@@ -89,19 +120,11 @@ export const BRAND_LOGOS: Record<string, BrandLogoEntry> = {
     glyph: "€",
     tone: "bg-[#3b5af1] text-white",
   },
-  polygon: {
-    id: "polygon",
-    label: "Polygon",
-    category: "crypto",
-    glyph: "◆",
-    tone: "bg-[#8247e5] text-white",
-  },
   soroban: {
     id: "soroban",
     label: "Soroban",
     category: "crypto",
-    glyph: "◯",
-    tone: "bg-black text-white",
+    src: "/currency-logo/soroban.svg",
   },
   circle: {
     id: "circle",
@@ -111,118 +134,121 @@ export const BRAND_LOGOS: Record<string, BrandLogoEntry> = {
     tone: "bg-[#0fbf95] text-white",
   },
 
-  /* -------------------- Card networks -------------------- */
+  /* ------------------------------ Card networks ------------------------------ */
   visa: {
     id: "visa",
     label: "Visa",
     category: "card",
-    glyph: "V",
-    tone: "bg-[#1a1f71] text-white",
+    src: "/payment-logo/visa.svg",
   },
   mastercard: {
     id: "mastercard",
     label: "Mastercard",
     category: "card",
-    glyph: "M",
-    tone: "bg-[#eb001b] text-white",
+    src: "/payment-logo/mastercard.svg",
   },
   amex: {
     id: "amex",
     label: "Amex",
     category: "card",
-    glyph: "A",
-    tone: "bg-[#006fcf] text-white",
+    src: "/payment-logo/amex.svg",
   },
   card: {
-    // Generic card placeholder
+    /* Generic "debit card" — used in DemoWidget "Deliver as" picker */
     id: "card",
-    label: "Card",
+    label: "Debit card",
     category: "card",
-    glyph: "■",
+    icon: CreditCard,
     tone: "bg-ink text-bg",
   },
 
-  /* -------------------- Bank rails -------------------- */
+  /* ------------------------------- Bank rails -------------------------------- */
   bank: {
     id: "bank",
     label: "Bank",
     category: "bank",
-    glyph: "B",
+    icon: Landmark,
     tone: "bg-ink text-bg",
   },
   ach: {
     id: "ach",
     label: "ACH",
     category: "bank",
-    glyph: "A",
+    icon: Banknote,
     tone: "bg-bg-soft text-ink border border-rule",
   },
   swift: {
     id: "swift",
     label: "SWIFT",
     category: "bank",
-    glyph: "S",
+    icon: Building2,
     tone: "bg-bg-soft text-ink border border-rule",
   },
   sepa: {
     id: "sepa",
     label: "SEPA",
     category: "bank",
-    glyph: "S",
+    icon: Building2,
     tone: "bg-bg-soft text-ink border border-rule",
   },
 
-  /* -------------------- Mobile money / global payouts -------------------- */
+  /* -------------------------- Mobile money / global -------------------------- */
   moneygram: {
     id: "moneygram",
     label: "MoneyGram",
     category: "mobile",
-    glyph: "M",
-    tone: "bg-[#d31837] text-white",
+    src: "/payment-logo/moneygram.svg",
   },
   mpesa: {
     id: "mpesa",
     label: "M-Pesa",
     category: "mobile",
-    glyph: "M",
+    icon: Smartphone,
     tone: "bg-[#1a8540] text-white",
   },
   wise: {
     id: "wise",
     label: "Wise",
     category: "mobile",
-    glyph: "W",
-    tone: "bg-[#9fe870] text-ink",
+    src: "/payment-logo/wise.svg",
+    srcLockup: "/brand-mark/wise.svg",
+  },
+  mobile: {
+    /* Generic mobile money */
+    id: "mobile",
+    label: "Mobile money",
+    category: "mobile",
+    icon: Smartphone,
+    tone: "bg-accent text-ink",
   },
 
-  /* -------------------- Integrations / SaaS -------------------- */
+  /* ----------------------------- Integrations -------------------------------- */
   stripe: {
     id: "stripe",
     label: "Stripe",
     category: "integration",
-    glyph: "S",
-    tone: "bg-[#635bff] text-white",
+    src: "/integration-logo/stripe.svg",
+    srcLockup: "/brand-mark/stripe.svg",
   },
   "stripe-treasury": {
     id: "stripe-treasury",
     label: "Stripe Treasury",
     category: "integration",
-    glyph: "S",
-    tone: "bg-[#635bff] text-white",
+    src: "/integration-logo/stripe.svg",
+    srcLockup: "/brand-mark/stripe.svg",
   },
   quickbooks: {
     id: "quickbooks",
     label: "QuickBooks",
     category: "integration",
-    glyph: "Q",
-    tone: "bg-[#2ca01c] text-white",
+    src: "/integration-logo/quickbooks.svg",
   },
   xero: {
     id: "xero",
     label: "Xero",
     category: "integration",
-    glyph: "X",
-    tone: "bg-[#13b5ea] text-white",
+    src: "/integration-logo/xero.svg",
+    srcLockup: "/brand-mark/xero.svg",
   },
   netsuite: {
     id: "netsuite",
@@ -235,29 +261,46 @@ export const BRAND_LOGOS: Record<string, BrandLogoEntry> = {
     id: "zapier",
     label: "Zapier",
     category: "integration",
-    glyph: "Z",
-    tone: "bg-[#ff4a00] text-white",
+    src: "/integration-logo/zapier.svg",
+    srcLockup: "/brand-mark/zapier.svg",
   },
   slack: {
     id: "slack",
     label: "Slack",
     category: "integration",
-    glyph: "S",
-    tone: "bg-[#4a154b] text-white",
+    src: "/integration-logo/slack.svg",
+    srcLockup: "/brand-mark/slack.svg",
   },
   notion: {
     id: "notion",
     label: "Notion",
     category: "integration",
-    glyph: "N",
-    tone: "bg-bg-card text-ink border border-rule",
+    src: "/integration-logo/notion.svg",
   },
   webhooks: {
     id: "webhooks",
     label: "Webhooks",
     category: "integration",
-    glyph: "{ }",
+    icon: Webhook,
     tone: "bg-bg-soft text-ink border border-rule",
+  },
+  github: {
+    id: "github",
+    label: "GitHub",
+    category: "integration",
+    src: "/integration-logo/github.svg",
+  },
+  linkedin: {
+    id: "linkedin",
+    label: "LinkedIn",
+    category: "integration",
+    src: "/integration-logo/linkedin.svg",
+  },
+  x: {
+    id: "x",
+    label: "X",
+    category: "integration",
+    src: "/integration-logo/x.svg",
   },
 };
 

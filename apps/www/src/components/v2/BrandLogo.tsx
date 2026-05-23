@@ -106,6 +106,23 @@ export function BrandLogo({
         />
       );
     }
+  } else if (logo.icon) {
+    const Icon = logo.icon;
+    const iconPx = Math.round(px * 0.5);
+    mark = (
+      <span
+        aria-label={withLabel ? undefined : logo.label}
+        role={withLabel ? undefined : "img"}
+        className={cn(
+          "inline-grid shrink-0 place-items-center",
+          shapeCls,
+          logo.tone,
+        )}
+        style={{ width: px, height: px }}
+      >
+        <Icon size={iconPx} strokeWidth={1.7} />
+      </span>
+    );
   } else {
     mark = (
       <span

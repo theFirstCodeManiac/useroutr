@@ -239,7 +239,7 @@ export function Developers() {
                   key={id}
                   className="group flex flex-col items-center gap-2 rounded-2xl border border-rule bg-bg-card p-3 transition hover:border-rule-2"
                 >
-                  <BrandLogo id={id} size="md" shape="rounded" />
+                  <BrandLogo id={id} size="md" shape="square" />
                   <span
                     className="text-[10px] uppercase tracking-[0.12em] text-ink-3"
                     style={{ fontFamily: "var(--font-mono)" }}

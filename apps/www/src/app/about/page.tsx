@@ -62,12 +62,20 @@ const team = [
   },
 ];
 
-const investors = [
-  "Bessemer Venture Partners",
-  "Stellar Development Foundation",
-  "Coinbase Ventures",
-  "Multicoin Capital",
-  "South Park Commons",
+/**
+ * Each investor renders as either a wordmark image (when `lockup` is set)
+ * or styled text (fallback). Drop a new SVG into /public/brand-mark/ and
+ * point `lockup` at it to upgrade an entry from text to a real logo.
+ */
+const investors: { name: string; lockup?: string }[] = [
+  { name: "Bessemer Venture Partners" },
+  {
+    name: "Stellar Development Foundation",
+    lockup: "/brand-mark/stellar-foundation.svg",
+  },
+  { name: "Coinbase Ventures" },
+  { name: "Multicoin Capital" },
+  { name: "South Park Commons" },
 ];
 
 export default function AboutPage() {
@@ -238,15 +246,29 @@ export default function AboutPage() {
                 Backed by
               </div>
               <div className="mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
-                {investors.map((i) => (
-                  <span
-                    key={i}
-                    className="text-[18px] tracking-[-0.02em] text-ink-3 md:text-[22px]"
-                    style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
-                  >
-                    {i}
-                  </span>
-                ))}
+                {investors.map((inv) =>
+                  inv.lockup ? (
+                    /* eslint-disable-next-line @next/next/no-img-element */
+                    <img
+                      key={inv.name}
+                      src={inv.lockup}
+                      alt={inv.name}
+                      className="h-6 w-auto opacity-70 transition hover:opacity-100 md:h-7"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <span
+                      key={inv.name}
+                      className="text-[18px] tracking-[-0.02em] text-ink-3 md:text-[22px]"
+                      style={{
+                        fontFamily: "var(--font-display)",
+                        fontWeight: 500,
+                      }}
+                    >
+                      {inv.name}
+                    </span>
+                  ),
+                )}
               </div>
             </div>
           </div>
