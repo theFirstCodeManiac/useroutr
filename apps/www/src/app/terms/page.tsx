@@ -94,20 +94,29 @@ const sections: LegalSection[] = [
     ),
   },
   {
-    id: "non-custody",
-    heading: "Funds & non-custodial architecture",
+    id: "funds-and-custody",
+    heading: "Funds, managed wallets, and self-custody",
     body: (
       <>
         <p>
-          Useroutr is non-custodial. We never hold customer funds in our own
-          accounts or wallets. Funds move directly between the payer, the
-          underlying networks, and your designated settlement destination.
+          Settlement happens on-chain. Funds move directly through the
+          underlying networks from the payer to your designated settlement
+          destination — they do not sit on a Useroutr balance sheet.
         </p>
         <p>
-          You are solely responsible for the custody and security of the
-          wallets, bank accounts, and other settlement destinations you connect
-          to Useroutr. We strongly recommend hardware security modules or
-          multi-party computation for any wallet handling material balances.
+          By default, Useroutr provisions and manages a Stellar settlement
+          wallet on your behalf so you can accept payments from day one. The
+          keys for that managed wallet are held by Useroutr under encryption
+          (KEK in a managed secrets store) and used solely to forward funds
+          to you. You can withdraw the balance to a wallet you control at any
+          time, and you can upgrade to a self-custody settlement wallet
+          (passkey-derived or bring-your-own) whenever you choose.
+        </p>
+        <p>
+          When you operate a self-custody settlement wallet, you are solely
+          responsible for its custody and security. We strongly recommend
+          hardware security modules or multi-party computation for any wallet
+          handling material balances.
         </p>
       </>
     ),

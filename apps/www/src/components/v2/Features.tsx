@@ -254,7 +254,7 @@ function FeatureCard() {
               Powered by Useroutr
             </span>
             <span aria-hidden>·</span>
-            <span>Non-custodial</span>
+            <span>On-chain settlement</span>
           </div>
         </div>
       </div>

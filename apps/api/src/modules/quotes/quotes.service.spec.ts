@@ -9,7 +9,7 @@ import { Prisma } from '@prisma/client';
 import { QuotesService } from './quotes.service';
 import { PrismaService } from '../prisma/prisma.service';
 import { StellarService } from '../stellar/stellar.service';
-import { BridgeRouterService } from '../bridge/bridge-router.service';
+import { RouterService } from '../cctp/router.service';
 import { Chain } from '@useroutr/types';
 import { CreateQuoteDto } from './dto/create-quote.dto';
 
@@ -111,7 +111,7 @@ describe('QuotesService', () => {
         QuotesService,
         { provide: PrismaService, useValue: prisma },
         { provide: StellarService, useValue: stellarMock },
-        { provide: BridgeRouterService, useValue: bridgeRouterMock },
+        { provide: RouterService, useValue: bridgeRouterMock },
         {
           provide: 'default_IORedisModuleConnectionToken',
           useValue: redisMock,

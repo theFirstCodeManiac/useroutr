@@ -17,7 +17,7 @@ const releases = [
     date: "April 18, 2026",
     label: "Funding",
     title:
-      "Useroutr raises $24M Series A to build non-custodial cross-chain payment infrastructure",
+      "Useroutr raises $24M Series A to build cross-chain stablecoin payment infrastructure",
     excerpt:
       "Round led by Bessemer Venture Partners with participation from Stellar Development Foundation, Coinbase Ventures, and Multicoin Capital.",
     href: "/press/series-a",
@@ -45,7 +45,7 @@ const releases = [
     label: "Launch",
     title: "Useroutr exits stealth with private beta of its payment API",
     excerpt:
-      "Built on Stellar and Soroban, Useroutr offers non-custodial payment processing with a Stripe-style developer experience.",
+      "Built on Stellar and Soroban, Useroutr offers stablecoin payment processing with a Stripe-style developer experience.",
     href: "/press/exit-stealth",
   },
 ];
@@ -53,7 +53,7 @@ const releases = [
 const mentions = [
   {
     publication: "TechCrunch",
-    title: "Useroutr wants to be the Stripe of non-custodial payments",
+    title: "Useroutr wants to be the Stripe of stablecoin payments",
     date: "April 19, 2026",
     href: "#",
   },
@@ -65,7 +65,7 @@ const mentions = [
   },
   {
     publication: "Sifted",
-    title: "Non-custodial payments are having a moment — Useroutr leads the charge",
+    title: "Stablecoin payments are having a moment — Useroutr leads the charge",
     date: "February 11, 2026",
     href: "#",
   },

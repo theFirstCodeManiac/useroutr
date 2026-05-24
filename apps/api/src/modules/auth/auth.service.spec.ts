@@ -32,6 +32,7 @@ jest.mock('../prisma/prisma.service', () => ({
 import { AuthService } from './auth.service';
 import { PrismaService } from '../prisma/prisma.service';
 import { NotificationsService } from '../notifications/notifications.service';
+import { MerchantSettlementService } from '../merchant/merchant-settlement.service';
 
 interface MockMerchant {
   id: string;
@@ -87,6 +88,14 @@ const mockNotificationsService = {
   sendPasswordResetEmail: jest.fn().mockResolvedValue(undefined),
 };
 
+// MerchantSettlementService stub — register() calls provision() in a
+// try/catch, so even a resolved Promise is enough to keep tests green.
+// Specific tests can override to assert provisioning was triggered or
+// to simulate a Stellar outage.
+const mockSettlementService = {
+  provision: jest.fn().mockResolvedValue({ stellarAddress: 'G_TEST_ADDR' }),
+};
+
 describe('AuthService', () => {
   let service: AuthService;
 
@@ -99,6 +108,10 @@ describe('AuthService', () => {
         {
           provide: NotificationsService,
           useValue: mockNotificationsService,
+        },
+        {
+          provide: MerchantSettlementService,
+          useValue: mockSettlementService,
         },
       ],
     }).compile();

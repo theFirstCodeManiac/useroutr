@@ -25,8 +25,8 @@ const cases = [
     slug: "fintech",
     label: "Fintech apps",
     n: "02",
-    body: "Embed wallet-to-wallet, fiat-to-crypto, and cross-chain transfers without becoming a money transmitter. Useroutr stays non-custodial all the way through, so your app does too.",
-    meta: ["Fintech", "Embedded", "Non-custodial"],
+    body: "Embed wallet-to-wallet, fiat-to-crypto, and cross-chain transfers without becoming a money transmitter. Settlement happens on-chain; we manage the destination wallet out of the box, and you can hand customers passkey-controlled wallets when you're ready.",
+    meta: ["Fintech", "Embedded", "On-chain settlement"],
     icon: "fintech" as const,
   },
   {

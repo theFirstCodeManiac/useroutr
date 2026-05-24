@@ -8,7 +8,7 @@ import { PageMast } from "@/components/v2/PageMast";
 export const metadata: Metadata = {
   title: "Customers — Useroutr",
   description:
-    "Marketplaces, fintechs, and global businesses building on Useroutr's non-custodial payment infrastructure.",
+    "Marketplaces, fintechs, and global businesses building on Useroutr's cross-chain stablecoin payment infrastructure.",
   alternates: { canonical: "/customers" },
 };
 

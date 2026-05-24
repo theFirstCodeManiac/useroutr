@@ -21,7 +21,7 @@ const accept: RailItem[] = [
   { id: "eurc" },
   { id: "xlm" },
   { id: "soroban", label: "Soroban" },
-  { id: "circle", label: "Circle CCTP" },
+  { id: "circle", label: "Circle CCTP V2" },
   { id: "sol", label: "Solana" },
   { id: "polygon", label: "Polygon" },
   { id: "eth", label: "Ethereum" },
@@ -83,7 +83,7 @@ export function TrustStrip() {
           <div className="mx-auto flex max-w-[360px] items-center gap-3">
             <span className="h-px flex-1 bg-ink/15" />
             <span className="eyebrow whitespace-nowrap text-ink-3">
-              Bridged in 2–4 seconds
+              Bridged in seconds, not minutes
             </span>
             <span className="h-px flex-1 bg-ink/15" />
           </div>

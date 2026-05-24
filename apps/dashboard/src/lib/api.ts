@@ -126,57 +126,61 @@ async function request<T>(
     throw new Error(getApiConnectionErrorMessage());
   }
 
-  if (res.status === 401) {
-    // Attempt one more refresh
-    if (typeof window !== "undefined") {
-      const newToken = await refreshAccessToken();
-      if (!newToken) {
-        clearTokens();
-        window.location.href = "/login";
-        throw new Error("Session expired");
-      }
-
-      // Retry the original request with new token
-      let retryRes: Response;
-
-      try {
-        retryRes = await fetch(url.toString(), {
-          method,
-          headers: {
-            ...(isFormData ? {} : { "Content-Type": "application/json" }),
-            Authorization: `Bearer ${newToken}`,
-            ...options.headers,
-          },
-          body: isFormData
-            ? (options.body as FormData)
-            : options.body
-              ? JSON.stringify(options.body)
-              : undefined,
-        });
-      } catch {
-        throw new Error(getApiConnectionErrorMessage());
-      }
-
-      if (retryRes.status === 401) {
-        clearTokens();
-        window.location.href = "/login";
-        throw new Error("Session expired");
-      }
-
-      if (!retryRes.ok) {
-        const retryErrorBody = await parseResponse<ApiErrorBody>(
-          retryRes,
-        ).catch(() => ({}) as ApiErrorBody);
-        throw new Error(
-          extractErrorMessage(
-            retryErrorBody,
-            `API error: ${retryRes.status} ${retryRes.statusText}`,
-          ),
-        );
-      }
-
-      return parseResponse<T>(retryRes);
+  // The "session expired → refresh → retry" dance only makes sense when we
+  // actually sent a token. A 401 from an unauthenticated request — e.g.
+  // POST /auth/login with the wrong password, or any public endpoint with
+  // bad input — means "credentials rejected," not "session timed out."
+  // Treating both the same way silently masks real auth errors ("Invalid
+  // email or password") behind the misleading "Session expired" banner and
+  // bounces the user back to /login they're already on.
+  if (res.status === 401 && token && typeof window !== "undefined") {
+    const newToken = await refreshAccessToken();
+    if (!newToken) {
+      clearTokens();
+      window.location.href = "/login";
+      throw new Error("Session expired");
     }
+
+    // Retry the original request with new token
+    let retryRes: Response;
+
+    try {
+      retryRes = await fetch(url.toString(), {
+        method,
+        headers: {
+          ...(isFormData ? {} : { "Content-Type": "application/json" }),
+          Authorization: `Bearer ${newToken}`,
+          ...options.headers,
+        },
+        body: isFormData
+          ? (options.body as FormData)
+          : options.body
+            ? JSON.stringify(options.body)
+            : undefined,
+      });
+    } catch {
+      throw new Error(getApiConnectionErrorMessage());
+    }
+
+    if (retryRes.status === 401) {
+      clearTokens();
+      window.location.href = "/login";
+      throw new Error("Session expired");
+    }
+
+    if (!retryRes.ok) {
+      const retryErrorBody = await parseResponse<ApiErrorBody>(
+        retryRes,
+      ).catch(() => ({}) as ApiErrorBody);
+      throw new Error(
+        extractErrorMessage(
+          retryErrorBody,
+          `API error: ${retryRes.status} ${retryRes.statusText}`,
+        ),
+      );
+    }
+
+    return parseResponse<T>(retryRes);
   }
 
   if (!res.ok) {
