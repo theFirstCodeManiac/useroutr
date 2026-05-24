@@ -1,9 +1,22 @@
-import { getToken, refreshAccessToken, clearTokens, isTokenExpired } from "./auth";
+import {
+  getToken,
+  refreshAccessToken,
+  clearTokens,
+  isTokenExpired,
+} from "./auth";
 
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3000";
+/**
+ * All HTTP calls hit the versioned surface (`/v1/*`). The env var points
+ * at the origin only — we append the prefix here so callers can keep
+ * writing `api.get("/auth/me")` and not think about versioning.
+ */
+const API_ORIGIN = (
+  process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3333"
+).replace(/\/$/, "");
+const BASE_URL = `${API_ORIGIN}/v1`;
 
 function getApiConnectionErrorMessage() {
-  return `Cannot reach the Useroutr API at ${BASE_URL}. Start it with \`npm run start:api\` or set NEXT_PUBLIC_API_URL.`;
+  return `Cannot reach the Useroutr API at ${API_ORIGIN}. Start it with \`npm run start:api\` or set NEXT_PUBLIC_API_URL.`;
 }
 
 interface RequestOptions {
@@ -71,9 +84,14 @@ async function getValidToken(): Promise<string | null> {
 async function request<T>(
   method: string,
   path: string,
-  options: RequestOptions & { body?: unknown } = {}
+  options: RequestOptions & { body?: unknown } = {},
 ): Promise<T> {
-  const url = new URL(path, BASE_URL);
+  // Concatenate rather than `new URL(path, BASE_URL)` — the URL constructor's
+  // second-arg behaviour treats an absolute `path` ("/auth/login") as a
+  // pathname replacement, which would silently strip the "/v1" version
+  // prefix from BASE_URL. The string-join approach is unambiguous.
+  const normalizedPath = path.startsWith("/") ? path : `/${path}`;
+  const url = new URL(`${BASE_URL}${normalizedPath}`);
 
   if (options.params) {
     Object.entries(options.params).forEach(([key, value]) => {
@@ -87,7 +105,8 @@ async function request<T>(
 
   let res: Response;
 
-  const isFormData = typeof FormData !== "undefined" && options.body instanceof FormData;
+  const isFormData =
+    typeof FormData !== "undefined" && options.body instanceof FormData;
 
   try {
     res = await fetch(url.toString(), {
@@ -97,7 +116,11 @@ async function request<T>(
         ...(token && { Authorization: `Bearer ${token}` }),
         ...options.headers,
       },
-      body: isFormData ? (options.body as FormData) : options.body ? JSON.stringify(options.body) : undefined,
+      body: isFormData
+        ? (options.body as FormData)
+        : options.body
+          ? JSON.stringify(options.body)
+          : undefined,
     });
   } catch {
     throw new Error(getApiConnectionErrorMessage());
@@ -124,7 +147,11 @@ async function request<T>(
             Authorization: `Bearer ${newToken}`,
             ...options.headers,
           },
-          body: isFormData ? (options.body as FormData) : options.body ? JSON.stringify(options.body) : undefined,
+          body: isFormData
+            ? (options.body as FormData)
+            : options.body
+              ? JSON.stringify(options.body)
+              : undefined,
         });
       } catch {
         throw new Error(getApiConnectionErrorMessage());
@@ -138,10 +165,13 @@ async function request<T>(
 
       if (!retryRes.ok) {
         const retryErrorBody = await parseResponse<ApiErrorBody>(
-          retryRes
-        ).catch(() => ({} as ApiErrorBody));
+          retryRes,
+        ).catch(() => ({}) as ApiErrorBody);
         throw new Error(
-          extractErrorMessage(retryErrorBody, `API error: ${retryRes.status} ${retryRes.statusText}`)
+          extractErrorMessage(
+            retryErrorBody,
+            `API error: ${retryRes.status} ${retryRes.statusText}`,
+          ),
         );
       }
 
@@ -151,21 +181,28 @@ async function request<T>(
 
   if (!res.ok) {
     const errorBody = await parseResponse<ApiErrorBody>(res).catch(
-      () => ({} as ApiErrorBody)
+      () => ({}) as ApiErrorBody,
     );
-    throw new Error(extractErrorMessage(errorBody, `API error: ${res.status} ${res.statusText}`));
+    throw new Error(
+      extractErrorMessage(
+        errorBody,
+        `API error: ${res.status} ${res.statusText}`,
+      ),
+    );
   }
 
   return parseResponse<T>(res);
 }
 
 export const api = {
-  get: <T>(path: string, options?: RequestOptions) => request<T>("GET", path, options),
+  get: <T>(path: string, options?: RequestOptions) =>
+    request<T>("GET", path, options),
   post: <T>(path: string, body?: unknown, options?: RequestOptions) =>
     request<T>("POST", path, { ...options, body }),
   put: <T>(path: string, body?: unknown, options?: RequestOptions) =>
     request<T>("PUT", path, { ...options, body }),
   patch: <T>(path: string, body?: unknown, options?: RequestOptions) =>
     request<T>("PATCH", path, { ...options, body }),
-  delete: <T>(path: string, options?: RequestOptions) => request<T>("DELETE", path, options),
+  delete: <T>(path: string, options?: RequestOptions) =>
+    request<T>("DELETE", path, options),
 };

@@ -32,9 +32,10 @@
   --rule2: #cdced0;
 
   /* Brand */
-  --accent: #5b53d8;        /* indigo-violet — primary accent */
-  --accent-ink: #443bbf;    /* deeper hover */
-  --accent-soft: #ecebfa;   /* tinted bg */
+  --accent: #ff5b1f;        /* electric orange — primary accent */
+  --accent-ink: #d94606;    /* deeper hover */
+  --accent-soft: #fff1e8;   /* tinted bg */
+  --accent-tint: #ffe7d6;   /* slightly stronger section wash */
   --blue: #1a4fc4;          /* link / focus */
   --blue2: #4677de;
   --teal: #00807a;
@@ -138,9 +139,10 @@
   --rule2: #2e323c;
 
   /* Brand — slightly brighter accent for dark surfaces */
-  --accent: #7a72e9;
-  --accent-ink: #5e55d8;
-  --accent-soft: #1d1d3a;
+  --accent: #ff7a4a;
+  --accent-ink: #ff5b1f;
+  --accent-soft: #3a1d10;
+  --accent-tint: #4a2615;
 
   --blue: #5e8cf0;
   --blue2: #7ba1f4;
@@ -363,8 +365,15 @@
 .pill-dark:hover { background: color-mix(in oklab, var(--lead) 88%, var(--bg)); }
 .pill-light { background: var(--bg-card); color: var(--lead); border: 1px solid var(--rule2); }
 .pill-light:hover { border-color: var(--lead); }
-.pill-accent { background: var(--accent); color: #fff; }
-.pill-accent:hover { background: var(--accent-ink); }
+.pill-accent {
+  background: var(--accent);
+  color: var(--lead);
+  font-weight: 600;
+}
+.pill-accent:hover {
+  background: var(--accent-ink);
+  color: #fff;
+}
 
 /* Subtle grid background pattern (optional decorative) */
 .bg-grid {

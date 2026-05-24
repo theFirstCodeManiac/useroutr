@@ -73,7 +73,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [merchant, setMerchant] = useState<Merchant | null>(null);
   const [token, setToken] = useState<string | null>(null);
   const [verificationEmail, setVerificationEmail] = useState<string | null>(
-    null
+    null,
   );
   const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
@@ -134,7 +134,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         logout();
       }, delay);
     },
-    [clearRefreshTimer, logout]
+    [clearRefreshTimer, logout],
   );
 
   // ── Load existing session on mount ─────────────────────────────────────────

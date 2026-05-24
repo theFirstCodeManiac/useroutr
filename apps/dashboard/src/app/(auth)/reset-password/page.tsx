@@ -86,7 +86,7 @@ export default function ResetPasswordPage() {
         description="This password reset link is invalid or has expired. Request a new one."
       >
         <Link href="/forgot-password" className="block">
-          <span className="magnet inline-flex h-11 w-full items-center justify-center gap-1.5 rounded-full bg-foreground text-[14px] font-medium text-background transition-colors hover:bg-foreground/88">
+          <span className="magnet inline-flex h-11 w-full items-center justify-center gap-1.5 rounded-full bg-accent text-[14px] font-semibold text-foreground transition-colors hover:bg-accent-ink hover:text-white">
             Request a new link
             <ArrowRight className="size-4" strokeWidth={1.6} />
           </span>
@@ -118,7 +118,7 @@ export default function ResetPasswordPage() {
           </div>
         </div>
         <Link href="/login" className="mt-4 block">
-          <span className="magnet inline-flex h-11 w-full items-center justify-center gap-1.5 rounded-full bg-foreground text-[14px] font-medium text-background transition-colors hover:bg-foreground/88">
+          <span className="magnet inline-flex h-11 w-full items-center justify-center gap-1.5 rounded-full bg-accent text-[14px] font-semibold text-foreground transition-colors hover:bg-accent-ink hover:text-white">
             Sign in
             <ArrowRight className="size-4" strokeWidth={1.6} />
           </span>
@@ -229,7 +229,7 @@ export default function ResetPasswordPage() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="magnet mt-2 inline-flex h-11 w-full items-center justify-center gap-1.5 rounded-full bg-foreground text-[14px] font-medium text-background transition-colors hover:bg-foreground/88 disabled:opacity-60"
+          className="magnet mt-2 inline-flex h-11 w-full items-center justify-center gap-1.5 rounded-full bg-accent text-[14px] font-semibold text-foreground transition-colors hover:bg-accent-ink hover:text-white disabled:opacity-60"
         >
           {isSubmitting ? "Saving…" : "Save new password"}
           {!isSubmitting && <ArrowRight className="size-4" strokeWidth={1.6} />}

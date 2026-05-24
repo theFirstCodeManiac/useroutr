@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { ArrowRight, ArrowUpRight, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { APP_ROUTES } from "@/lib/config";
 import { Wordmark } from "@/components/site/Wordmark";
 
 interface NavbarProps {
@@ -75,7 +76,7 @@ export function Navbar({ onWaitlistClick }: NavbarProps) {
 
         <div className="flex items-center gap-2">
           <Link
-            href="/auth/login"
+            href={APP_ROUTES.login()}
             className="hidden rounded-full px-4 py-2 text-[14px] text-ink-2 transition-colors hover:text-ink md:inline-flex"
           >
             Sign in
@@ -125,7 +126,7 @@ export function Navbar({ onWaitlistClick }: NavbarProps) {
               <ArrowUpRight className="size-4 text-ink-3" strokeWidth={1.6} />
             </Link>
             <Link
-              href="/auth/login"
+              href={APP_ROUTES.login()}
               onClick={() => setOpen(false)}
               className="rounded-md px-2 py-3 text-lg text-ink-3"
             >

@@ -40,6 +40,7 @@ describe('QuotesService', () => {
   let prisma: MockPrisma;
   let bridgeRouterMock: MockBridgeRouter;
   let redisMock: MockRedis;
+  let stellarMock: { findStrictSendPaths: jest.Mock };
 
   const mockMerchant = {
     id: 'merchant-1',
@@ -88,11 +89,28 @@ describe('QuotesService', () => {
 
     bridgeRouterMock = { findRoute: jest.fn() };
 
+    // Stellar path finder mock — returns a deterministic 100:1 destination so
+    // tests that route through the stellar→stellar branch don't hit the real
+    // Horizon SDK. Individual tests can override the resolved value if needed.
+    stellarMock = {
+      findStrictSendPaths: jest.fn().mockResolvedValue({
+        destinationAmount: '100',
+        paths: [
+          {
+            source_asset_type: 'native',
+            destination_asset_type: 'credit_alphanum4',
+            destination_asset_code: 'USDC',
+            path: [],
+          },
+        ],
+      }),
+    };
+
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         QuotesService,
         { provide: PrismaService, useValue: prisma },
-        { provide: StellarService, useValue: {} },
+        { provide: StellarService, useValue: stellarMock },
         { provide: BridgeRouterService, useValue: bridgeRouterMock },
         {
           provide: 'default_IORedisModuleConnectionToken',

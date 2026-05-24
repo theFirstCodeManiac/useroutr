@@ -197,7 +197,7 @@ export function SignupForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="magnet mt-2 inline-flex h-11 w-full items-center justify-center gap-1.5 rounded-full bg-foreground text-[14px] font-medium text-background transition-colors hover:bg-foreground/88 disabled:opacity-60"
+        className="magnet mt-2 inline-flex h-11 w-full items-center justify-center gap-1.5 rounded-full bg-accent text-[14px] font-semibold text-foreground transition-colors hover:bg-accent-ink hover:text-white disabled:opacity-60"
       >
         {isSubmitting ? "Creating your workspace…" : "Open an account"}
         {!isSubmitting && <ArrowRight className="size-4" strokeWidth={1.6} />}
