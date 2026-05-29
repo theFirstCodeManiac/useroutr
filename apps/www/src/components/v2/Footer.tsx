@@ -16,7 +16,7 @@ const columns: { title: string; links: LinkItem[] }[] = [
       { label: "Pay by link", href: "/#product" },
       { label: "Invoices", href: "/#product" },
       { label: "Global payouts", href: "/#product" },
-      { label: "Pricing", href: "/#pricing" },
+      { label: "Pricing", href: "/pricing" },
     ],
   },
   {
