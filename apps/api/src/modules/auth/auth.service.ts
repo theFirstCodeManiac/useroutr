@@ -12,6 +12,7 @@ import * as crypto from 'crypto';
 import type { Merchant } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service.js';
 import { NotificationsService } from '../notifications/notifications.service.js';
+import { MerchantSettlementService } from '../merchant/merchant-settlement.service.js';
 import type { RegisterDto } from './dto/register.dto.js';
 import type { LoginDto } from './dto/login.dto.js';
 import type { JwtPayload } from './strategies/jwt.strategy.js';
@@ -59,6 +60,7 @@ export class AuthService {
     private readonly prisma: PrismaService,
     private readonly jwtService: JwtService,
     private readonly notifications: NotificationsService,
+    private readonly settlement: MerchantSettlementService,
   ) {}
 
   async register(dto: RegisterDto): Promise<AuthResponse> {
@@ -84,12 +86,31 @@ export class AuthService {
       },
     });
 
+    // Auto-provision a managed Stellar settlement wallet (Approach A).
+    // Wrapped in try/catch so a Stellar / Horizon outage doesn't block
+    // registration — the dashboard surfaces a "Provision settlement"
+    // CTA the merchant can click to retry, and PR 7.9b adds the manual
+    // endpoint for that retry.
+    try {
+      await this.settlement.provision(merchant.id);
+    } catch (err) {
+      this.logger.warn(
+        `Settlement provisioning failed for ${merchant.id} at register; merchant can retry from dashboard. (${err instanceof Error ? err.message : String(err)})`,
+      );
+    }
+
+    // Re-fetch so the response carries the settlement fields the provision
+    // call just wrote to the merchant row.
+    const updated = await this.prisma.merchant.findUnique({
+      where: { id: merchant.id },
+    });
+
     await this.dispatchVerificationEmail(merchant.email, code);
 
     const tokens = await this.generateTokens(merchant.id, merchant.email);
 
     return {
-      merchant: this.sanitizeMerchant(merchant),
+      merchant: this.sanitizeMerchant(updated ?? merchant),
       ...tokens,
     };
   }

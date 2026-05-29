@@ -435,7 +435,7 @@ function SubmitRow({
   return (
     <div className="flex items-center justify-between gap-3 border-t border-rule pt-5">
       <span className="text-[12px] text-ink-3">
-        Settles in ~2-4s · Non-custodial
+        Settles in ~8-20s · On-chain
       </span>
       <button type="button" onClick={onSubmit} className="magnet">
         <span className="pill pill-accent py-3 text-[13px]">

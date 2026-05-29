@@ -32,6 +32,8 @@ interface CachedEntry {
 
 interface AuthedRequest extends Request {
   user?: { id?: string };
+  /** Populated by Nest because main.ts creates the app with `rawBody: true`. */
+  rawBody?: Buffer;
 }
 
 /**

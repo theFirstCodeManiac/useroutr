@@ -52,9 +52,9 @@ const jetMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Useroutr — Pay anything. Settle everywhere.",
   description:
-    "Non-custodial cross-chain payment infrastructure built on Stellar. One SDK, one API, one dashboard for accepting payments and settling them where you want.",
+    "Cross-chain stablecoin payment infrastructure built on Stellar. One SDK, one API, one dashboard for accepting payments and settling them where you want — managed wallets out of the box, self-custody when you want.",
   keywords: [
-    "non-custodial payment processor",
+    "stablecoin payment processor",
     "stellar payment gateway",
     "crypto payment infrastructure",
     "cross-chain payment API",
@@ -73,7 +73,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Useroutr — Pay anything. Settle everywhere.",
     description:
-      "Non-custodial cross-chain payment infrastructure built on Stellar. Useroutr never holds the money in between.",
+      "Cross-chain stablecoin payment infrastructure built on Stellar. Settlement on-chain, managed wallets out of the box.",
     url: "https://useroutr.com",
     siteName: "Useroutr",
     images: [
@@ -81,7 +81,7 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Useroutr — non-custodial cross-chain payments",
+        alt: "Useroutr — cross-chain stablecoin payments",
       },
     ],
     locale: "en_US",
@@ -91,7 +91,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Useroutr — Pay anything. Settle everywhere.",
     description:
-      "Non-custodial cross-chain payment infrastructure built on Stellar.",
+      "Cross-chain stablecoin payment infrastructure built on Stellar.",
     creator: "@useroutr",
     images: ["/twitter-image.jpg"],
   },

@@ -6,20 +6,35 @@ import { LegalShell, type LegalSection } from "@/components/v2/LegalShell";
 export const metadata: Metadata = {
   title: "Security — Useroutr",
   description:
-    "How Useroutr secures its non-custodial payment infrastructure: architecture, encryption, access controls, audits, and incident response.",
+    "How Useroutr secures its payment infrastructure: architecture, encryption, key management, access controls, audits, and incident response.",
   alternates: { canonical: "/security" },
 };
 
 const sections: LegalSection[] = [
   {
     id: "architecture",
-    heading: "Non-custodial by design",
+    heading: "On-chain settlement, managed keys by default",
     body: (
       <>
         <p>
-          Useroutr never takes custody of customer funds. Payments and payouts
-          move directly between the payer, the underlying networks (Stellar,
-          Visa Direct, ACH, MoneyGram, etc.), and your settlement destination.
+          Settlement happens on-chain. Payments and payouts move directly
+          through the underlying networks (Stellar, Visa Direct, ACH,
+          MoneyGram, etc.) from payer to your settlement destination — the
+          funds never sit on a Useroutr balance sheet.
+        </p>
+        <p>
+          By default, Useroutr provisions and manages a Stellar settlement
+          wallet on your behalf so you can accept payments from day one. The
+          private key for that wallet is encrypted at rest under a KEK held
+          in a managed secrets store, used only to forward funds to you. You
+          can withdraw the balance to a wallet you control at any time, and
+          you can upgrade to a self-custody settlement wallet (passkey or
+          bring-your-own) whenever you choose.
+        </p>
+        <p>
+          Funds and payouts still move directly via the underlying networks
+          (Stellar, Visa Direct, ACH, MoneyGram, etc.) — Useroutr is the
+          orchestrator, not the destination.
           Our infrastructure routes, observes, and reconciles — it does not
           hold balances.
         </p>

@@ -46,7 +46,7 @@ const cases: Record<string, CaseContent> = {
       {
         eyebrow: "The integration",
         heading: "The shape of the integration.",
-        body: "A buyer pays through your branded checkout. Funds lock atomically in an HTLC. Your platform takes its cut at settlement — defined by you, transparent to the seller — and the remainder routes to the seller's chosen settlement asset and chain. The seller can withdraw to a bank account, a mobile money wallet, or a self-custody crypto wallet. Useroutr never sits in the middle holding seller funds.",
+        body: "A buyer pays through your branded checkout. Funds bridge atomically through Circle's CCTP V2 — burned on the source chain, minted on Stellar, all in 8–20 seconds. Your platform takes its cut at settlement — defined by you, transparent to the seller — and the remainder routes to the seller's chosen settlement asset and chain. The seller can withdraw to a bank account, a mobile money wallet, or a self-custody crypto wallet. Useroutr never sits in the middle holding seller funds.",
       },
       {
         eyebrow: "What you don't have to build",
@@ -76,7 +76,7 @@ const cases: Record<string, CaseContent> = {
     title: "Move money inside your app",
     titleAccent: "without becoming a money transmitter.",
     subhead:
-      "Useroutr is non-custodial by architecture, not by paperwork. Embed wallet-to-wallet transfers, fiat-to-crypto on-ramping, and cross-chain settlement — and stay outside the licensing perimeter that custodial platforms drag you into.",
+      "Settlement happens on-chain, not on our balance sheet. We provision managed Stellar wallets for new merchants so they can take payments from day one, and they can graduate to self-custody (passkey or BYO wallet) at any time — staying outside the licensing perimeter that custodial platforms drag you into.",
     primaryCta: {
       label: "Read the fintech guide",
       href: "https://docs.useroutr.com",
@@ -86,7 +86,7 @@ const cases: Record<string, CaseContent> = {
       {
         eyebrow: "The custody question",
         heading: "The custody question, in one paragraph.",
-        body: "Most embedded payment platforms take custody of user funds at some point in the flow. That custody triggers money transmitter licensing requirements, capital reserves, and a permanent compliance operation that costs more than the engineering team. Useroutr is built so that no funds — yours or your users' — pass through a Useroutr-controlled wallet at any step. HTLC contracts, CCTP attestations, and MoneyGram's anchor service are operated by parties Useroutr does not own or control.",
+        body: "Most embedded payment platforms take custody of user funds at some point in the flow. That custody triggers money transmitter licensing requirements, capital reserves, and a permanent compliance operation that costs more than the engineering team. Useroutr is built so that no funds — yours or your users' — pass through a Useroutr-controlled wallet at any step. Stellar's settlement contracts, Circle's CCTP V2 attestations, and MoneyGram's anchor service are operated by parties Useroutr does not own or control.",
       },
       {
         eyebrow: "The integration",
@@ -127,7 +127,7 @@ const cases: Record<string, CaseContent> = {
     sections: [
       {
         eyebrow: "What the customer sees",
-        heading: "A checkout that doesn't mention HTLCs.",
+        heading: "A checkout that doesn't make customers learn crypto.",
         body: "The Useroutr-hosted checkout opens with the merchant's logo, the order summary, and a method tab selector. Crypto users connect their wallet, see a 30-second-locked conversion quote, and approve. Fiat users redirect to MoneyGram's anchor flow and complete a deposit through the rails they already know. Both paths converge on the same confirmation screen. Mobile-first, sub-second to interactive.",
       },
       {

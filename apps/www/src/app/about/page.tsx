@@ -8,14 +8,14 @@ import { PageMast } from "@/components/v2/PageMast";
 export const metadata: Metadata = {
   title: "About — Useroutr",
   description:
-    "Useroutr is building non-custodial cross-chain payment infrastructure. Our story, our team, and what we believe.",
+    "Useroutr is building cross-chain stablecoin payment infrastructure. Our story, our team, and what we believe.",
   alternates: { canonical: "/about" },
 };
 
 const principles = [
   {
-    title: "Non-custodial by default",
-    body: "We will never hold customer funds. The product is built so that money moves directly between payer, network, and your treasury — never through us. If we can be hacked, your funds are still yours.",
+    title: "Managed by default, self-custody by choice",
+    body: "Settlement happens on-chain. We provision a managed Stellar wallet for every merchant at signup so they can take payments from day one, with an upgrade path to passkey or bring-your-own self-custody whenever they're ready. The funds never sit on our balance sheet.",
   },
   {
     title: "Stripe-level developer experience",
@@ -91,7 +91,7 @@ export default function AboutPage() {
               processor your business will ever need.
             </>
           }
-          description="One API for accepting and settling payments across every chain and every fiat rail. Non-custodial, audited, and built by people who have shipped payment infrastructure at the largest fintechs in the world."
+          description="One API for accepting and settling payments across every chain and every fiat rail. Settlement on-chain, audited, and built by people who have shipped payment infrastructure at the largest fintechs in the world."
         />
 
         {/* Story */}

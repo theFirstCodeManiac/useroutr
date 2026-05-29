@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Wordmark } from "@/components/site/Wordmark";
 import { BrandLogo } from "./BrandLogo";
+import { StatusPill } from "./StatusPill";
 import { BRAND_LOGOS } from "@/lib/brand-logos";
 
 type LinkItem = { label: string; href: string; external?: boolean };
@@ -78,10 +79,10 @@ export function Footer() {
               <Wordmark className="h-7" />
             </Link>
             <p className="mt-5 max-w-[320px] text-[14px] leading-relaxed text-ink-2">
-              Non-custodial cross-chain payment infrastructure. Built on
+              Cross-chain stablecoin payment infrastructure. Built on
               Stellar.{" "}
               <span className="text-ink">
-                We never hold the money in between.
+                Settlement on-chain, managed wallets out of the box.
               </span>
             </p>
             <a
@@ -134,16 +135,7 @@ export function Footer() {
             >
               © {new Date().getFullYear()} Useroutr Labs, Inc.
             </span>
-            <a
-              href="https://status.useroutr.com"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-rule px-3 py-1.5 text-[11.5px] text-ink-2 transition hover:border-ink hover:text-ink"
-              style={{ fontFamily: "var(--font-mono)" }}
-            >
-              <span className="size-1.5 rounded-full bg-[#1f6c43] pulse-soft" />
-              All systems normal
-            </a>
+            <StatusPill />
           </div>
           <div className="flex items-center gap-1.5">
             {socials.map((s) => {
