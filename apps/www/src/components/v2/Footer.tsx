@@ -44,7 +44,7 @@ const columns: { title: string; links: LinkItem[] }[] = [
       { label: "Use cases", href: "/use-cases" },
       { label: "Customers", href: "/customers" },
       { label: "Press", href: "/press" },
-      { label: "Contact", href: "mailto:hello@useroutr.com" },
+      { label: "Contact", href: "/contact" },
     ],
   },
   {
