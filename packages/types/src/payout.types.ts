@@ -22,6 +22,31 @@ export interface Payout {
 	completedAt?: string;
 }
 
-export type PayoutStatus = 'PENDING' | 'PROCESSING' | 'COMPLETED' | 'FAILED' | 'CANCELLED';
+export interface PayoutListResponse {
+  total: number;
+  limit: number;
+  offset: number;
+  data: Payout[];
+}
+
+export interface PayoutFilters {
+  status?: PayoutStatus;
+  destinationType?: DestType;
+  currency?: string;
+  dateFrom?: Date;
+  dateTo?: Date;
+  batchId?: string;
+  search?: string;
+  limit?: number;
+  offset?: number;
+}
+
+export interface BatchSummary {
+  batchId: string;
+  totalPayouts: number;
+  totalAmount: number;
+  currency: string;
+  statusCounts: Record<PayoutStatus, number>;
+}
 
 export default {};
